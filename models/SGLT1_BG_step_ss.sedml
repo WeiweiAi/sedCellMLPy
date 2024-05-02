@@ -1,0 +1,1795 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sedML xmlns="http://sed-ml.org/sed-ml/level1/version4" level="1" version="4">
+  <listOfModels>
+    <model id="SGLT1_BG_step_ss_fig5_m150mV" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.15"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1e-12"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_m120mV" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.12"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1e-12"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_m80mV" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.08"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1e-12"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_m50mV" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.05"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1e-12"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_m30mV" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.03"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1e-12"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_0mV" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="0"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1e-12"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_40mV" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="0.04"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1e-12"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_50mV" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="0.05"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1e-12"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_80mV" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="0.08"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1e-12"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_m150mV_sugar" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.15"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_m120mV_sugar" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.12"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_m80mV_sugar" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.08"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_m50mV_sugar" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.05"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_m30mV_sugar" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="-0.03"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_0mV_sugar" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="0"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_40mV_sugar" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="0.04"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_50mV_sugar" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="0.05"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1"/>
+      </listOfChanges>
+    </model>
+    <model id="SGLT1_BG_step_ss_fig5_80mV_sugar" language="urn:sedml:language:cellml" source="SGLT1_BG_step_ss.cellml">
+      <listOfChanges>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;test_volt&quot;]/@initial_value" newValue="0.08"/>
+        <changeAttribute target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;Glco&quot;]/@initial_value" newValue="1"/>
+      </listOfChanges>
+    </model>
+  </listOfModels>
+  <listOfSimulations>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m150mV" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m120mV" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m80mV" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m50mV" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m30mV" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_0mV" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_40mV" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_50mV" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_80mV" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m150mV_sugar" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m120mV_sugar" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m80mV_sugar" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m50mV_sugar" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_m30mV_sugar" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_0mV_sugar" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_40mV_sugar" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_50mV_sugar" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+    <uniformTimeCourse id="sim_SGLT1_BG_step_ss_fig5_80mV_sugar" initialTime="0" outputStartTime="0" outputEndTime="3" numberOfSteps="30000">
+      <algorithm name="VODE" kisaoID="KISAO:0000535">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-12"/>
+          <algorithmParameter name="atol" kisaoID="KISAO:0000211" value="1e-12"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
+    </uniformTimeCourse>
+  </listOfSimulations>
+  <listOfTasks>
+    <task id="task_SGLT1_BG_step_ss_fig5_m150mV" modelReference="SGLT1_BG_step_ss_fig5_m150mV" simulationReference="sim_SGLT1_BG_step_ss_fig5_m150mV"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_m120mV" modelReference="SGLT1_BG_step_ss_fig5_m120mV" simulationReference="sim_SGLT1_BG_step_ss_fig5_m120mV"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_m80mV" modelReference="SGLT1_BG_step_ss_fig5_m80mV" simulationReference="sim_SGLT1_BG_step_ss_fig5_m80mV"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_m50mV" modelReference="SGLT1_BG_step_ss_fig5_m50mV" simulationReference="sim_SGLT1_BG_step_ss_fig5_m50mV"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_m30mV" modelReference="SGLT1_BG_step_ss_fig5_m30mV" simulationReference="sim_SGLT1_BG_step_ss_fig5_m30mV"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_0mV" modelReference="SGLT1_BG_step_ss_fig5_0mV" simulationReference="sim_SGLT1_BG_step_ss_fig5_0mV"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_40mV" modelReference="SGLT1_BG_step_ss_fig5_40mV" simulationReference="sim_SGLT1_BG_step_ss_fig5_40mV"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_50mV" modelReference="SGLT1_BG_step_ss_fig5_50mV" simulationReference="sim_SGLT1_BG_step_ss_fig5_50mV"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_80mV" modelReference="SGLT1_BG_step_ss_fig5_80mV" simulationReference="sim_SGLT1_BG_step_ss_fig5_80mV"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_m150mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m150mV_sugar" simulationReference="sim_SGLT1_BG_step_ss_fig5_m150mV_sugar"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_m120mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m120mV_sugar" simulationReference="sim_SGLT1_BG_step_ss_fig5_m120mV_sugar"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_m80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m80mV_sugar" simulationReference="sim_SGLT1_BG_step_ss_fig5_m80mV_sugar"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_m50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m50mV_sugar" simulationReference="sim_SGLT1_BG_step_ss_fig5_m50mV_sugar"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_m30mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m30mV_sugar" simulationReference="sim_SGLT1_BG_step_ss_fig5_m30mV_sugar"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_0mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_0mV_sugar" simulationReference="sim_SGLT1_BG_step_ss_fig5_0mV_sugar"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_40mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_40mV_sugar" simulationReference="sim_SGLT1_BG_step_ss_fig5_40mV_sugar"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_50mV_sugar" simulationReference="sim_SGLT1_BG_step_ss_fig5_50mV_sugar"/>
+    <task id="task_SGLT1_BG_step_ss_fig5_80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_80mV_sugar" simulationReference="sim_SGLT1_BG_step_ss_fig5_80mV_sugar"/>
+  </listOfTasks>
+  <listOfDataGenerators>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_t" name="dg_SGLT1_BG_step_ss_fig5_m150mV_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV" modelReference="SGLT1_BG_step_ss_fig5_m150mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_Ii" name="dg_SGLT1_BG_step_ss_fig5_m150mV_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV" modelReference="SGLT1_BG_step_ss_fig5_m150mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m150mV_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV" modelReference="SGLT1_BG_step_ss_fig5_m150mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m150mV_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV" modelReference="SGLT1_BG_step_ss_fig5_m150mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_V_E" name="dg_SGLT1_BG_step_ss_fig5_m150mV_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV" modelReference="SGLT1_BG_step_ss_fig5_m150mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_t" name="dg_SGLT1_BG_step_ss_fig5_m120mV_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV" modelReference="SGLT1_BG_step_ss_fig5_m120mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_Ii" name="dg_SGLT1_BG_step_ss_fig5_m120mV_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV" modelReference="SGLT1_BG_step_ss_fig5_m120mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m120mV_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV" modelReference="SGLT1_BG_step_ss_fig5_m120mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m120mV_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV" modelReference="SGLT1_BG_step_ss_fig5_m120mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_V_E" name="dg_SGLT1_BG_step_ss_fig5_m120mV_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV" modelReference="SGLT1_BG_step_ss_fig5_m120mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_t" name="dg_SGLT1_BG_step_ss_fig5_m80mV_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV" modelReference="SGLT1_BG_step_ss_fig5_m80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_Ii" name="dg_SGLT1_BG_step_ss_fig5_m80mV_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV" modelReference="SGLT1_BG_step_ss_fig5_m80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m80mV_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV" modelReference="SGLT1_BG_step_ss_fig5_m80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m80mV_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV" modelReference="SGLT1_BG_step_ss_fig5_m80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_V_E" name="dg_SGLT1_BG_step_ss_fig5_m80mV_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV" modelReference="SGLT1_BG_step_ss_fig5_m80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_t" name="dg_SGLT1_BG_step_ss_fig5_m50mV_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV" modelReference="SGLT1_BG_step_ss_fig5_m50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_Ii" name="dg_SGLT1_BG_step_ss_fig5_m50mV_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV" modelReference="SGLT1_BG_step_ss_fig5_m50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m50mV_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV" modelReference="SGLT1_BG_step_ss_fig5_m50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m50mV_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV" modelReference="SGLT1_BG_step_ss_fig5_m50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_V_E" name="dg_SGLT1_BG_step_ss_fig5_m50mV_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV" modelReference="SGLT1_BG_step_ss_fig5_m50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_t" name="dg_SGLT1_BG_step_ss_fig5_m30mV_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV" modelReference="SGLT1_BG_step_ss_fig5_m30mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_Ii" name="dg_SGLT1_BG_step_ss_fig5_m30mV_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV" modelReference="SGLT1_BG_step_ss_fig5_m30mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m30mV_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV" modelReference="SGLT1_BG_step_ss_fig5_m30mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m30mV_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV" modelReference="SGLT1_BG_step_ss_fig5_m30mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_V_E" name="dg_SGLT1_BG_step_ss_fig5_m30mV_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV" modelReference="SGLT1_BG_step_ss_fig5_m30mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_t" name="dg_SGLT1_BG_step_ss_fig5_0mV_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV" modelReference="SGLT1_BG_step_ss_fig5_0mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_Ii" name="dg_SGLT1_BG_step_ss_fig5_0mV_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV" modelReference="SGLT1_BG_step_ss_fig5_0mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_I_ss" name="dg_SGLT1_BG_step_ss_fig5_0mV_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV" modelReference="SGLT1_BG_step_ss_fig5_0mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_0mV_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV" modelReference="SGLT1_BG_step_ss_fig5_0mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_V_E" name="dg_SGLT1_BG_step_ss_fig5_0mV_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV" modelReference="SGLT1_BG_step_ss_fig5_0mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_t" name="dg_SGLT1_BG_step_ss_fig5_40mV_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV" modelReference="SGLT1_BG_step_ss_fig5_40mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_Ii" name="dg_SGLT1_BG_step_ss_fig5_40mV_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV" modelReference="SGLT1_BG_step_ss_fig5_40mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_I_ss" name="dg_SGLT1_BG_step_ss_fig5_40mV_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV" modelReference="SGLT1_BG_step_ss_fig5_40mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_40mV_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV" modelReference="SGLT1_BG_step_ss_fig5_40mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_V_E" name="dg_SGLT1_BG_step_ss_fig5_40mV_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV" modelReference="SGLT1_BG_step_ss_fig5_40mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_t" name="dg_SGLT1_BG_step_ss_fig5_50mV_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV" modelReference="SGLT1_BG_step_ss_fig5_50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_Ii" name="dg_SGLT1_BG_step_ss_fig5_50mV_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV" modelReference="SGLT1_BG_step_ss_fig5_50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_I_ss" name="dg_SGLT1_BG_step_ss_fig5_50mV_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV" modelReference="SGLT1_BG_step_ss_fig5_50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_50mV_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV" modelReference="SGLT1_BG_step_ss_fig5_50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_V_E" name="dg_SGLT1_BG_step_ss_fig5_50mV_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV" modelReference="SGLT1_BG_step_ss_fig5_50mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_t" name="dg_SGLT1_BG_step_ss_fig5_80mV_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV" modelReference="SGLT1_BG_step_ss_fig5_80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_Ii" name="dg_SGLT1_BG_step_ss_fig5_80mV_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV" modelReference="SGLT1_BG_step_ss_fig5_80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_I_ss" name="dg_SGLT1_BG_step_ss_fig5_80mV_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV" modelReference="SGLT1_BG_step_ss_fig5_80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_80mV_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV" modelReference="SGLT1_BG_step_ss_fig5_80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_V_E" name="dg_SGLT1_BG_step_ss_fig5_80mV_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV" modelReference="SGLT1_BG_step_ss_fig5_80mV"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_t" name="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_sugar_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_sugar_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m150mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_Ii" name="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_sugar_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_sugar_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m150mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_sugar_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_sugar_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m150mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_sugar_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_sugar_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m150mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_V_E" name="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m150mV_sugar_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m150mV_sugar_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m150mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m150mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_t" name="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_sugar_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_sugar_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m120mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_Ii" name="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_sugar_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_sugar_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m120mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_sugar_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_sugar_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m120mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_sugar_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_sugar_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m120mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_V_E" name="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m120mV_sugar_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m120mV_sugar_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m120mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m120mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_t" name="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_sugar_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_sugar_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_Ii" name="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_sugar_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_sugar_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_sugar_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_sugar_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_sugar_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_sugar_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_V_E" name="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m80mV_sugar_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m80mV_sugar_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_t" name="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_sugar_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_sugar_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_Ii" name="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_sugar_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_sugar_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_sugar_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_sugar_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_sugar_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_sugar_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_V_E" name="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m50mV_sugar_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m50mV_sugar_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_t" name="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_sugar_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_sugar_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m30mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_Ii" name="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_sugar_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_sugar_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m30mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_I_ss" name="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_sugar_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_sugar_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m30mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_sugar_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_sugar_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m30mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_V_E" name="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_m30mV_sugar_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_m30mV_sugar_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_m30mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_m30mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_t" name="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_sugar_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_sugar_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_0mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_Ii" name="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_sugar_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_sugar_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_0mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_I_ss" name="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_sugar_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_sugar_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_0mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_sugar_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_sugar_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_0mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_V_E" name="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_0mV_sugar_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_0mV_sugar_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_0mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_0mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_t" name="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_sugar_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_sugar_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_40mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_Ii" name="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_sugar_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_sugar_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_40mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_I_ss" name="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_sugar_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_sugar_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_40mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_sugar_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_sugar_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_40mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_V_E" name="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_40mV_sugar_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_40mV_sugar_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_40mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_40mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_t" name="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_sugar_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_sugar_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_Ii" name="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_sugar_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_sugar_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_I_ss" name="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_sugar_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_sugar_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_sugar_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_sugar_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_V_E" name="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_50mV_sugar_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_50mV_sugar_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_50mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_50mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_t" name="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_t">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_sugar_t </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_sugar_t" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;t&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_Ii" name="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_Ii">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_sugar_Ii </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_sugar_Ii" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;Ii&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="-1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_I_ss" name="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_I_ss">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_sugar_I_ss </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_sugar_I_ss" target="/cellml:model/cellml:component[@name=&quot;SGLT1_BG&quot;]/cellml:variable[@name=&quot;I_ss&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1e-06"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_V0_Vm" name="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_V0_Vm">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_sugar_V0_Vm </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_sugar_V0_Vm" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V0_Vm&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_V_E" name="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_V_E">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> SGLT1_BG_step_ss_fig5_80mV_sugar_V_E </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="SGLT1_BG_step_ss_fig5_80mV_sugar_V_E" target="/cellml:model/cellml:component[@name=&quot;params_BG&quot;]/cellml:variable[@name=&quot;V_E&quot;]" taskReference="task_SGLT1_BG_step_ss_fig5_80mV_sugar" modelReference="SGLT1_BG_step_ss_fig5_80mV_sugar"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1000"/>
+      </listOfParameters>
+    </dataGenerator>
+  </listOfDataGenerators>
+  <listOfOutputs>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m150mV" name="report_task_SGLT1_BG_step_ss_fig5_m150mV">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m120mV" name="report_task_SGLT1_BG_step_ss_fig5_m120mV">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m80mV" name="report_task_SGLT1_BG_step_ss_fig5_m80mV">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m50mV" name="report_task_SGLT1_BG_step_ss_fig5_m50mV">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m30mV" name="report_task_SGLT1_BG_step_ss_fig5_m30mV">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_0mV" name="report_task_SGLT1_BG_step_ss_fig5_0mV">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_40mV" name="report_task_SGLT1_BG_step_ss_fig5_40mV">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_50mV" name="report_task_SGLT1_BG_step_ss_fig5_50mV">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_80mV" name="report_task_SGLT1_BG_step_ss_fig5_80mV">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m150mV_sugar" name="report_task_SGLT1_BG_step_ss_fig5_m150mV_sugar">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_sugar_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_sugar_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_sugar_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_sugar_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m150mV_sugar_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m150mV_sugar_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m120mV_sugar" name="report_task_SGLT1_BG_step_ss_fig5_m120mV_sugar">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_sugar_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_sugar_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_sugar_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_sugar_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m120mV_sugar_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m120mV_sugar_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m80mV_sugar" name="report_task_SGLT1_BG_step_ss_fig5_m80mV_sugar">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_sugar_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_sugar_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_sugar_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_sugar_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m80mV_sugar_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m80mV_sugar_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m50mV_sugar" name="report_task_SGLT1_BG_step_ss_fig5_m50mV_sugar">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_sugar_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_sugar_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_sugar_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_sugar_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m50mV_sugar_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m50mV_sugar_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_m30mV_sugar" name="report_task_SGLT1_BG_step_ss_fig5_m30mV_sugar">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_sugar_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_sugar_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_sugar_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_sugar_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_m30mV_sugar_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_m30mV_sugar_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_0mV_sugar" name="report_task_SGLT1_BG_step_ss_fig5_0mV_sugar">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_sugar_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_sugar_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_sugar_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_sugar_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_0mV_sugar_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_0mV_sugar_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_40mV_sugar" name="report_task_SGLT1_BG_step_ss_fig5_40mV_sugar">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_sugar_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_sugar_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_sugar_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_sugar_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_40mV_sugar_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_40mV_sugar_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_50mV_sugar" name="report_task_SGLT1_BG_step_ss_fig5_50mV_sugar">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_sugar_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_sugar_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_sugar_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_sugar_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_50mV_sugar_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_50mV_sugar_V_E"/>
+      </listOfDataSets>
+    </report>
+    <report id="report_task_SGLT1_BG_step_ss_fig5_80mV_sugar" name="report_task_SGLT1_BG_step_ss_fig5_80mV_sugar">
+      <listOfDataSets>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_sugar_t" label="t" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_t"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_sugar_Ii" label="Ii" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_Ii"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_sugar_I_ss" label="I_ss" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_I_ss"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_sugar_V0_Vm" label="V0_Vm" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_V0_Vm"/>
+        <dataSet id="dataset_SGLT1_BG_step_ss_fig5_80mV_sugar_V_E" label="V_E" dataReference="dg_SGLT1_BG_step_ss_fig5_80mV_sugar_V_E"/>
+      </listOfDataSets>
+    </report>
+  </listOfOutputs>
+</sedML>

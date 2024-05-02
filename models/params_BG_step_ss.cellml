@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.cellml.org/cellml/2.0#" name="params_BG">
+  <import xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./units.cellml">
+    <units units_ref="per_fmol" name="per_fmol"/>
+    <units units_ref="C_per_mol" name="C_per_mol"/>
+    <units units_ref="fmol_per_s" name="fmol_per_s"/>
+    <units units_ref="fmol" name="fmol"/>
+    <units units_ref="J_per_K_mol" name="J_per_K_mol"/>
+    <units units_ref="mM" name="mM"/>
+    <units units_ref="pL" name="pL"/>
+    <units units_ref="fA" name="fA"/>
+    <units units_ref="fF" name="fF"/>
+  </import>
+  <component name="params_BG">
+    <variable name="R" units="J_per_K_mol" initial_value="8.31" interface="public"/>
+    <variable name="T" units="kelvin" initial_value="293" interface="public"/>
+    <variable name="F" units="C_per_mol" initial_value="96485" interface="public"/>
+    <variable name="K_Nai" units="per_fmol" initial_value="3.216e-08" interface="public"/>
+    <variable name="q_Nai" units="fmol" interface="public"/>
+    <variable name="K_Nao" units="per_fmol" initial_value="3.216e-08" interface="public"/>
+    <variable name="q_Nao" units="fmol" interface="public"/>
+    <variable name="K_Glci" units="per_fmol" initial_value="4.848e-06" interface="public"/>
+    <variable name="q_Glci" units="fmol" interface="public"/>
+    <variable name="K_Glco" units="per_fmol" initial_value="4.848e-06" interface="public"/>
+    <variable name="q_Glco" units="fmol" interface="public"/>
+    <variable name="K_1" units="per_fmol" initial_value="2.235" interface="public"/>
+    <variable name="q_init_1" units="fmol" initial_value="16.605778811026234" interface="public"/>
+    <variable name="K_2" units="per_fmol" initial_value="10.437" interface="public"/>
+    <variable name="q_init_2" units="fmol" initial_value="16.605778811026234" interface="public"/>
+    <variable name="K_3" units="per_fmol" initial_value="8.602" interface="public"/>
+    <variable name="q_init_3" units="fmol" initial_value="16.605778811026234" interface="public"/>
+    <variable name="K_4" units="per_fmol" initial_value="8.602" interface="public"/>
+    <variable name="q_init_4" units="fmol" initial_value="16.605778811026234" interface="public"/>
+    <variable name="K_5" units="per_fmol" initial_value="28.628" interface="public"/>
+    <variable name="q_init_5" units="fmol" initial_value="16.605778811026234" interface="public"/>
+    <variable name="K_6" units="per_fmol" initial_value="0.192" interface="public"/>
+    <variable name="q_init_6" units="fmol" initial_value="16.605778811026234" interface="public"/>
+    <variable name="V0_Vm" units="volt" interface="public"/>
+    <variable name="z_zf1" units="dimensionless" initial_value="0.3" interface="public"/>
+    <variable name="z_zr1" units="dimensionless" initial_value="0.3" interface="public"/>
+    <variable name="z_zf6" units="dimensionless" initial_value="0.7" interface="public"/>
+    <variable name="z_zr6" units="dimensionless" initial_value="0.7" interface="public"/>
+    <variable name="kappa_r1" units="fmol_per_s" initial_value="47.905" interface="public"/>
+    <variable name="kappa_r2" units="fmol_per_s" initial_value="2.325" interface="public"/>
+    <variable name="kappa_r3" units="fmol_per_s" initial_value="5.812" interface="public"/>
+    <variable name="kappa_r4" units="fmol_per_s" initial_value="92.998" interface="public"/>
+    <variable name="kappa_r5" units="fmol_per_s" initial_value="0.349" interface="public"/>
+    <variable name="kappa_r6" units="fmol_per_s" initial_value="15.661" interface="public"/>
+    <variable name="kappa_r7" units="fmol_per_s" initial_value="0.029" interface="public"/>
+    <variable name="Nai" units="mM" initial_value="20"/>
+    <variable name="Nao" units="mM" initial_value="100"/>
+    <variable name="Glci" units="mM" initial_value="10e-3"/>
+    <variable name="Glco" units="mM" initial_value="1e-12"/>
+    <variable name="V_i" units="pL" initial_value="8.5e5"/>
+    <variable name="V_o" units="pL" initial_value="8.5e5"/>
+    <variable name="t" units="second" interface="public"/>
+    <variable name="V_E" units="volt" interface="public"/>
+    <variable name="test_volt" units="volt" initial_value="0"/>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:cellml="http://www.cellml.org/cellml/2.0#">
+      <apply>
+        <eq/>
+        <ci>V0_Vm</ci>
+        <ci>V_E</ci>
+      </apply>
+      <apply>
+        <eq/>
+        <ci>q_Nai</ci>
+        <apply>
+          <times/>
+          <ci>Nai</ci>
+          <ci>V_i</ci>
+        </apply>
+      </apply>
+      <apply>
+        <eq/>
+        <ci>q_Nao</ci>
+        <apply>
+          <times/>
+          <ci>Nao</ci>
+          <ci>V_o</ci>
+        </apply>
+      </apply>
+      <apply>
+        <eq/>
+        <ci>q_Glci</ci>
+        <apply>
+          <times/>
+          <ci>Glci</ci>
+          <ci>V_i</ci>
+        </apply>
+      </apply>
+      <apply>
+        <eq/>
+        <ci>q_Glco</ci>
+        <apply>
+          <times/>
+          <ci>Glco</ci>
+          <ci>V_o</ci>
+        </apply>
+      </apply>
+      <apply>
+        <eq/>
+        <ci>V_E</ci>
+        <piecewise>
+          <piece>
+            <apply>
+              <minus/>
+              <cn cellml:units="volt">0.05</cn>
+            </apply>
+            <apply>
+              <lt/>
+              <ci>t</ci>
+              <cn type="e-notation" cellml:units="second">1204.75<sep/>-3</cn>
+            </apply>
+          </piece>
+          <piece>
+            <ci>test_volt</ci>
+            <apply>
+              <lt/>
+              <ci>t</ci>
+              <cn type="e-notation" cellml:units="second">2984.75<sep/>-3</cn>
+            </apply>
+          </piece>
+          <otherwise>
+            <apply>
+              <minus/>
+              <cn cellml:units="volt">0.05</cn>
+            </apply>
+          </otherwise>
+        </piecewise>
+      </apply>
+    </math>
+  </component>
+</model>
