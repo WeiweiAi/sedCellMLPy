@@ -157,7 +157,7 @@ def resolve_imports(model, base_dir,strict_mode=True):
         issues="resolve_imports: No issues found!<br>"
         return importer, issues
     else:
-        return None, issues
+        return importer, issues
 
 def analyse_model(flatModel,external_variables_dic={}):
     """ 

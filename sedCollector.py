@@ -1031,8 +1031,9 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
 
         if temp_model_source is None:
             temp_model_source =model.getSource()
-        cellml_model,parse_issues=parse_model(temp_model_source, True)
-        importer,issues_import=resolve_imports(cellml_model, working_dir,True)
+        cellml_model,parse_issues=parse_model(temp_model_source, False)
+        model_base_dir=os.path.dirname(temp_model_source)
+        importer,issues_import=resolve_imports(cellml_model, model_base_dir,False)
         flatModel=importer.flattenModel(cellml_model)
         if not flatModel:
             raise RuntimeError('Model flattening failed!')
@@ -1042,7 +1043,7 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
             model.setSource(full_path)
 
         temp_model, temp_model_source, model_etree = resolve_model_and_apply_xml_changes(model, doc, working_dir) # must set save_to_file=True
-        cellml_model,parse_issues=parse_model(temp_model_source, True)
+        cellml_model,parse_issues=parse_model(temp_model_source, False)
         os.remove(full_path)
         # cleanup modified model sources
         os.remove(temp_model_source)
@@ -1077,7 +1078,7 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
         fitExperiments[fitExperiment.getId()]['model']=model
         try:
             temp_model, temp_model_source, model_etree = resolve_model_and_apply_xml_changes(model, doc, working_dir) # must set save_to_file=True
-            cellml_model,parse_issues=parse_model(temp_model_source, True)
+            cellml_model,parse_issues=parse_model(temp_model_source, False)
             # cleanup modified model sources
             os.remove(temp_model_source)
             if not cellml_model:
@@ -1257,8 +1258,9 @@ def get_task_info(doc,task,working_dir,external_variables_info={},external_varia
 
         if temp_model_source is None:
             temp_model_source =sed_model.getSource()
-        cellml_model,parse_issues=parse_model(temp_model_source, True)
-        importer,issues_import=resolve_imports(cellml_model, working_dir,True)
+        cellml_model,parse_issues=parse_model(temp_model_source, False)
+        model_base_dir=os.path.dirname(temp_model_source)
+        importer,issues_import=resolve_imports(cellml_model, model_base_dir,False)
         flatModel=importer.flattenModel(cellml_model)
         if not flatModel:
             raise RuntimeError('Model flattening failed!')
@@ -1268,7 +1270,7 @@ def get_task_info(doc,task,working_dir,external_variables_info={},external_varia
             sed_model.setSource(full_path)
 
         temp_model, temp_model_source, model_etree = resolve_model_and_apply_xml_changes(sed_model, doc, working_dir) # must set save_to_file=True
-        cellml_model,parse_issues=parse_model(temp_model_source, True)
+        cellml_model,parse_issues=parse_model(temp_model_source, False)
         # cleanup modified model sources
         os.remove(full_path)
         os.remove(temp_model_source)

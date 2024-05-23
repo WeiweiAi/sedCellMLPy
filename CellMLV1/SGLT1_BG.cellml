@@ -1,0 +1,961 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model name="SGLT1_BG" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <import xlink:href="./units.cellml">
+        <units name="fmol_per_s" units_ref="fmol_per_s"/>
+        <units name="C_per_mol" units_ref="C_per_mol"/>
+        <units name="per_fmol" units_ref="per_fmol"/>
+        <units name="fmol" units_ref="fmol"/>
+        <units name="fA" units_ref="fA"/>
+        <units name="J_per_mol" units_ref="J_per_mol"/>
+        <units name="J_per_K_mol" units_ref="J_per_K_mol"/>
+    </import>
+    <import xlink:href="params_BG.cellml">
+        <component component_ref="params_BG" name="params_BG"/>
+    </import>
+    <component name="SGLT1_BG">
+        <variable name="t" public_interface="in" units="second"/>
+        <variable name="R" public_interface="in" units="J_per_K_mol"/>
+        <variable name="T" public_interface="in" units="kelvin"/>
+        <variable name="F" public_interface="in" units="C_per_mol"/>
+        <variable name="K_Nai" public_interface="in" units="per_fmol"/>
+        <variable name="q_Nai" public_interface="in" units="fmol"/>
+        <variable name="K_Nao" public_interface="in" units="per_fmol"/>
+        <variable name="q_Nao" public_interface="in" units="fmol"/>
+        <variable name="K_Glci" public_interface="in" units="per_fmol"/>
+        <variable name="q_Glci" public_interface="in" units="fmol"/>
+        <variable name="K_Glco" public_interface="in" units="per_fmol"/>
+        <variable name="q_Glco" public_interface="in" units="fmol"/>
+        <variable name="K_1" public_interface="in" units="per_fmol"/>
+        <variable name="q_init_1" public_interface="in" units="fmol"/>
+        <variable name="K_2" public_interface="in" units="per_fmol"/>
+        <variable name="q_init_2" public_interface="in" units="fmol"/>
+        <variable name="K_3" public_interface="in" units="per_fmol"/>
+        <variable name="q_init_3" public_interface="in" units="fmol"/>
+        <variable name="K_4" public_interface="in" units="per_fmol"/>
+        <variable name="q_init_4" public_interface="in" units="fmol"/>
+        <variable name="K_5" public_interface="in" units="per_fmol"/>
+        <variable name="q_init_5" public_interface="in" units="fmol"/>
+        <variable name="K_6" public_interface="in" units="per_fmol"/>
+        <variable name="q_init_6" public_interface="in" units="fmol"/>
+        <variable name="V0_Vm" public_interface="in" units="volt"/>
+        <variable name="z_zf1" public_interface="in" units="dimensionless"/>
+        <variable name="z_zr1" public_interface="in" units="dimensionless"/>
+        <variable name="z_zf6" public_interface="in" units="dimensionless"/>
+        <variable name="z_zr6" public_interface="in" units="dimensionless"/>
+        <variable name="kappa_r1" public_interface="in" units="fmol_per_s"/>
+        <variable name="kappa_r2" public_interface="in" units="fmol_per_s"/>
+        <variable name="kappa_r3" public_interface="in" units="fmol_per_s"/>
+        <variable name="kappa_r4" public_interface="in" units="fmol_per_s"/>
+        <variable name="kappa_r5" public_interface="in" units="fmol_per_s"/>
+        <variable name="kappa_r6" public_interface="in" units="fmol_per_s"/>
+        <variable name="kappa_r7" public_interface="in" units="fmol_per_s"/>
+        <variable name="mu_Nai" units="J_per_mol"/>
+        <variable name="mu_Nao" units="J_per_mol"/>
+        <variable name="mu_Glci" units="J_per_mol"/>
+        <variable name="mu_Glco" units="J_per_mol"/>
+        <variable name="mu_1" units="J_per_mol"/>
+        <variable name="v_1" units="fmol_per_s"/>
+        <variable name="mu_2" units="J_per_mol"/>
+        <variable name="v_2" units="fmol_per_s"/>
+        <variable name="mu_3" units="J_per_mol"/>
+        <variable name="v_3" units="fmol_per_s"/>
+        <variable name="mu_4" units="J_per_mol"/>
+        <variable name="v_4" units="fmol_per_s"/>
+        <variable name="mu_5" units="J_per_mol"/>
+        <variable name="v_5" units="fmol_per_s"/>
+        <variable name="mu_6" units="J_per_mol"/>
+        <variable name="v_6" units="fmol_per_s"/>
+        <variable name="V_Vm" units="volt"/>
+        <variable name="V_zf1" units="volt"/>
+        <variable name="I_zf1" units="fA"/>
+        <variable name="mu_zf1" units="J_per_mol"/>
+        <variable name="v_zf1" units="fmol_per_s"/>
+        <variable name="V_zr1" units="volt"/>
+        <variable name="I_zr1" units="fA"/>
+        <variable name="mu_zr1" units="J_per_mol"/>
+        <variable name="v_zr1" units="fmol_per_s"/>
+        <variable name="V_zf6" units="volt"/>
+        <variable name="I_zf6" units="fA"/>
+        <variable name="mu_zf6" units="J_per_mol"/>
+        <variable name="v_zf6" units="fmol_per_s"/>
+        <variable name="V_zr6" units="volt"/>
+        <variable name="I_zr6" units="fA"/>
+        <variable name="mu_zr6" units="J_per_mol"/>
+        <variable name="v_zr6" units="fmol_per_s"/>
+        <variable name="A_f_r1" units="J_per_mol"/>
+        <variable name="v_r1" units="fmol_per_s"/>
+        <variable name="A_r_r1" units="J_per_mol"/>
+        <variable name="A_f_r2" units="J_per_mol"/>
+        <variable name="v_r2" units="fmol_per_s"/>
+        <variable name="A_r_r2" units="J_per_mol"/>
+        <variable name="A_f_r3" units="J_per_mol"/>
+        <variable name="v_r3" units="fmol_per_s"/>
+        <variable name="A_r_r3" units="J_per_mol"/>
+        <variable name="A_f_r4" units="J_per_mol"/>
+        <variable name="v_r4" units="fmol_per_s"/>
+        <variable name="A_r_r4" units="J_per_mol"/>
+        <variable name="A_f_r5" units="J_per_mol"/>
+        <variable name="v_r5" units="fmol_per_s"/>
+        <variable name="A_r_r5" units="J_per_mol"/>
+        <variable name="A_f_r6" units="J_per_mol"/>
+        <variable name="v_r6" units="fmol_per_s"/>
+        <variable name="A_r_r6" units="J_per_mol"/>
+        <variable name="A_f_r7" units="J_per_mol"/>
+        <variable name="v_r7" units="fmol_per_s"/>
+        <variable name="A_r_r7" units="J_per_mol"/>
+        <variable initial_value="q_init_1" name="q_1" units="fmol"/>
+        <variable initial_value="q_init_2" name="q_2" units="fmol"/>
+        <variable initial_value="q_init_3" name="q_3" units="fmol"/>
+        <variable initial_value="q_init_4" name="q_4" units="fmol"/>
+        <variable initial_value="q_init_5" name="q_5" units="fmol"/>
+        <variable initial_value="q_init_6" name="q_6" units="fmol"/>
+        <variable name="Ii" public_interface="out" units="fA"/>
+        <variable name="I_ss" public_interface="out" units="fA"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>I_ss</ci>
+                <apply>
+                    <times/>
+                    <cn cellml:units="dimensionless">2</cn>
+                    <ci>F</ci>
+                    <apply>
+                        <minus/>
+                        <ci>v_r6</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>Ii</ci>
+                <apply>
+                    <plus/>
+                    <ci>I_zf1</ci>
+                    <ci>I_zr1</ci>
+                    <ci>I_zf6</ci>
+                    <ci>I_zr6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_Nai</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_Nai</ci>
+                            <ci>q_Nai</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_Nao</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_Nao</ci>
+                            <ci>q_Nao</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_Glci</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_Glci</ci>
+                            <ci>q_Glci</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_Glco</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_Glco</ci>
+                            <ci>q_Glco</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_1</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_1</ci>
+                            <ci>q_1</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>q_1</ci>
+                </apply>
+                <ci>v_1</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_2</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_2</ci>
+                            <ci>q_2</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>q_2</ci>
+                </apply>
+                <ci>v_2</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_3</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_3</ci>
+                            <ci>q_3</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>q_3</ci>
+                </apply>
+                <ci>v_3</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_4</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_4</ci>
+                            <ci>q_4</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>q_4</ci>
+                </apply>
+                <ci>v_4</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_5</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_5</ci>
+                            <ci>q_5</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>q_5</ci>
+                </apply>
+                <ci>v_5</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_6</ci>
+                <apply>
+                    <times/>
+                    <ci>R</ci>
+                    <ci>T</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <ci>K_6</ci>
+                            <ci>q_6</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>q_6</ci>
+                </apply>
+                <ci>v_6</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>V_Vm</ci>
+                <ci>V0_Vm</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_zf1</ci>
+                <apply>
+                    <times/>
+                    <ci>z_zf1</ci>
+                    <ci>F</ci>
+                    <ci>V_zf1</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_zf1</ci>
+                <apply>
+                    <times/>
+                    <ci>z_zf1</ci>
+                    <ci>F</ci>
+                    <ci>v_zf1</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_zr1</ci>
+                <apply>
+                    <times/>
+                    <ci>z_zr1</ci>
+                    <ci>F</ci>
+                    <ci>V_zr1</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_zr1</ci>
+                <apply>
+                    <times/>
+                    <ci>z_zr1</ci>
+                    <ci>F</ci>
+                    <ci>v_zr1</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_zf6</ci>
+                <apply>
+                    <times/>
+                    <ci>z_zf6</ci>
+                    <ci>F</ci>
+                    <ci>V_zf6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_zf6</ci>
+                <apply>
+                    <times/>
+                    <ci>z_zf6</ci>
+                    <ci>F</ci>
+                    <ci>v_zf6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>mu_zr6</ci>
+                <apply>
+                    <times/>
+                    <ci>z_zr6</ci>
+                    <ci>F</ci>
+                    <ci>V_zr6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_zr6</ci>
+                <apply>
+                    <times/>
+                    <ci>z_zr6</ci>
+                    <ci>F</ci>
+                    <ci>v_zr6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_r1</ci>
+                <apply>
+                    <times/>
+                    <ci>kappa_r1</ci>
+                    <apply>
+                        <minus/>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_f_r1</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_r_r1</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_r2</ci>
+                <apply>
+                    <times/>
+                    <ci>kappa_r2</ci>
+                    <apply>
+                        <minus/>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_f_r2</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_r_r2</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_r3</ci>
+                <apply>
+                    <times/>
+                    <ci>kappa_r3</ci>
+                    <apply>
+                        <minus/>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_f_r3</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_r_r3</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_r4</ci>
+                <apply>
+                    <times/>
+                    <ci>kappa_r4</ci>
+                    <apply>
+                        <minus/>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_f_r4</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_r_r4</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_r5</ci>
+                <apply>
+                    <times/>
+                    <ci>kappa_r5</ci>
+                    <apply>
+                        <minus/>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_f_r5</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_r_r5</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_r6</ci>
+                <apply>
+                    <times/>
+                    <ci>kappa_r6</ci>
+                    <apply>
+                        <minus/>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_f_r6</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_r_r6</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_r7</ci>
+                <apply>
+                    <times/>
+                    <ci>kappa_r7</ci>
+                    <apply>
+                        <minus/>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_f_r7</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <exp/>
+                            <apply>
+                                <divide/>
+                                <ci>A_r_r7</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_1</ci>
+                <apply>
+                    <plus/>
+                    <apply>
+                        <minus/>
+                        <ci>v_r1</ci>
+                    </apply>
+                    <ci>v_r6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_2</ci>
+                <apply>
+                    <minus/>
+                    <apply>
+                        <minus/>
+                        <ci>v_r1</ci>
+                        <ci>v_r2</ci>
+                    </apply>
+                    <ci>v_r7</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_3</ci>
+                <apply>
+                    <minus/>
+                    <ci>v_r2</ci>
+                    <ci>v_r3</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_4</ci>
+                <apply>
+                    <minus/>
+                    <ci>v_r3</ci>
+                    <ci>v_r4</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_5</ci>
+                <apply>
+                    <plus/>
+                    <apply>
+                        <minus/>
+                        <ci>v_r4</ci>
+                        <ci>v_r5</ci>
+                    </apply>
+                    <ci>v_r7</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_6</ci>
+                <apply>
+                    <minus/>
+                    <ci>v_r5</ci>
+                    <ci>v_r6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_zf1</ci>
+                <ci>v_r1</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>V_zf1</ci>
+                <ci>V_Vm</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_zr1</ci>
+                <ci>v_r1</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>V_zr1</ci>
+                <ci>V_Vm</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_zf6</ci>
+                <ci>v_r6</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>V_zf6</ci>
+                <ci>V_Vm</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>v_zr6</ci>
+                <ci>v_r6</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>V_zr6</ci>
+                <ci>V_Vm</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_f_r1</ci>
+                <apply>
+                    <minus/>
+                    <apply>
+                        <plus/>
+                        <apply>
+                            <times/>
+                            <cn cellml:units="dimensionless">2</cn>
+                            <ci>mu_Nao</ci>
+                        </apply>
+                        <ci>mu_1</ci>
+                    </apply>
+                    <ci>mu_zf1</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_r_r1</ci>
+                <apply>
+                    <plus/>
+                    <ci>mu_2</ci>
+                    <ci>mu_zr1</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_f_r2</ci>
+                <apply>
+                    <plus/>
+                    <ci>mu_Glco</ci>
+                    <ci>mu_2</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_r_r2</ci>
+                <ci>mu_3</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_f_r3</ci>
+                <ci>mu_3</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_r_r3</ci>
+                <ci>mu_4</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_f_r4</ci>
+                <ci>mu_4</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_r_r4</ci>
+                <apply>
+                    <plus/>
+                    <ci>mu_Glci</ci>
+                    <ci>mu_5</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_f_r5</ci>
+                <ci>mu_5</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_r_r5</ci>
+                <apply>
+                    <plus/>
+                    <apply>
+                        <times/>
+                        <cn cellml:units="dimensionless">2</cn>
+                        <ci>mu_Nai</ci>
+                    </apply>
+                    <ci>mu_6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_f_r6</ci>
+                <apply>
+                    <minus/>
+                    <ci>mu_6</ci>
+                    <ci>mu_zf6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_r_r6</ci>
+                <apply>
+                    <plus/>
+                    <ci>mu_1</ci>
+                    <ci>mu_zr6</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_f_r7</ci>
+                <ci>mu_2</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>A_r_r7</ci>
+                <ci>mu_5</ci>
+            </apply>
+        </math>
+    </component>
+    <connection>
+        <map_components component_1="params_BG" component_2="SGLT1_BG"/>
+        <map_variables variable_1="R" variable_2="R"/>
+        <map_variables variable_1="T" variable_2="T"/>
+        <map_variables variable_1="F" variable_2="F"/>
+        <map_variables variable_1="K_Nai" variable_2="K_Nai"/>
+        <map_variables variable_1="q_Nai" variable_2="q_Nai"/>
+        <map_variables variable_1="K_Nao" variable_2="K_Nao"/>
+        <map_variables variable_1="q_Nao" variable_2="q_Nao"/>
+        <map_variables variable_1="K_Glci" variable_2="K_Glci"/>
+        <map_variables variable_1="q_Glci" variable_2="q_Glci"/>
+        <map_variables variable_1="K_Glco" variable_2="K_Glco"/>
+        <map_variables variable_1="q_Glco" variable_2="q_Glco"/>
+        <map_variables variable_1="K_1" variable_2="K_1"/>
+        <map_variables variable_1="q_init_1" variable_2="q_init_1"/>
+        <map_variables variable_1="K_2" variable_2="K_2"/>
+        <map_variables variable_1="q_init_2" variable_2="q_init_2"/>
+        <map_variables variable_1="K_3" variable_2="K_3"/>
+        <map_variables variable_1="q_init_3" variable_2="q_init_3"/>
+        <map_variables variable_1="K_4" variable_2="K_4"/>
+        <map_variables variable_1="q_init_4" variable_2="q_init_4"/>
+        <map_variables variable_1="K_5" variable_2="K_5"/>
+        <map_variables variable_1="q_init_5" variable_2="q_init_5"/>
+        <map_variables variable_1="K_6" variable_2="K_6"/>
+        <map_variables variable_1="q_init_6" variable_2="q_init_6"/>
+        <map_variables variable_1="V0_Vm" variable_2="V0_Vm"/>
+        <map_variables variable_1="z_zf1" variable_2="z_zf1"/>
+        <map_variables variable_1="z_zr1" variable_2="z_zr1"/>
+        <map_variables variable_1="z_zf6" variable_2="z_zf6"/>
+        <map_variables variable_1="z_zr6" variable_2="z_zr6"/>
+        <map_variables variable_1="kappa_r1" variable_2="kappa_r1"/>
+        <map_variables variable_1="kappa_r2" variable_2="kappa_r2"/>
+        <map_variables variable_1="kappa_r3" variable_2="kappa_r3"/>
+        <map_variables variable_1="kappa_r4" variable_2="kappa_r4"/>
+        <map_variables variable_1="kappa_r5" variable_2="kappa_r5"/>
+        <map_variables variable_1="kappa_r6" variable_2="kappa_r6"/>
+        <map_variables variable_1="kappa_r7" variable_2="kappa_r7"/>
+        <map_variables variable_1="t" variable_2="t"/>
+    </connection>
+</model>
