@@ -1,3 +1,14 @@
+"""
+This file contains functions that are modified versions of functions from https://github.com/biosimulators/Biosimulators_utils.git.
+The original code is licensed under the MIT license.
+
+Original source: https://github.com/biosimulators/Biosimulators_utils/blob/dev/biosimulators_utils/report/io.py
+
+The MIT License (MIT)
+
+Copyright (c) 2020, Center for Reproducible Biomedical Modeling
+"""
+
 import os
 import numpy
 import pandas
@@ -54,7 +65,7 @@ def writeReport(report, results, base_path, rel_path, format='csv'):
             return
         if len(set(data_set.getLabel () for data_set in report.getListOfDataSets ())) < len(report.getListOfDataSets ()):
             print('To facilitate machine interpretation, data sets should have unique labels.')
-        msg = 'Reports exported to {} do not contain information about the data type or size of each data set.'.format(
+        msg = 'Reports exported to {}.'.format(
             format.upper())
         print(msg)
         #results_df = pandas.DataFrame(results_array, index=data_set_labels)
@@ -79,7 +90,7 @@ def readReport(report, base_path, rel_path, format='csv'):
     rel_path = os.path.relpath(rel_path, '.')
 
     if format in ['csv','tsv','xlsx']:
-        print('Reports exported to {} do not contain information about the data type or size of each data set.'.format(
+        print('Reports exported to {}.'.format(
             format.upper()))
         if format in ['csv','tsv']:
             filename = os.path.join(base_path, rel_path + '.' + format)

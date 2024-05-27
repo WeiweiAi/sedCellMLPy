@@ -1,3 +1,13 @@
+"""
+This file contains functions that are modified versions of functions from https://github.com/biosimulators/Biosimulators_utils.git.
+The original code is licensed under the MIT license.
+
+Original source: https://github.com/biosimulators/Biosimulators_utils/blob/dev/biosimulators_utils/sedml/utils.py
+
+The MIT License (MIT)
+
+Copyright (c) 2020, Center for Reproducible Biomedical Modeling
+"""
 import requests
 import tempfile
 import os

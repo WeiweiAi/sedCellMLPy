@@ -33,16 +33,10 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
     if len(listOfTasks)==0:
         print('SED document does not describe any tasks.')
         return
-    print('{}Found {} tasks and {} outputs:\n{}Tasks:\n{}{}\n{}Outputs:\n{}{}'.format(
+    print('{}Found {} tasks and {} outputs:\n'.format(
         ' ' * 2 * indent,
         len(listOfTasks),
-        len(listOfTasks),
-        ' ' * 2 * (indent + 1),
-        ' ' * 2 * (indent + 2),
-        ('\n' + ' ' * 2 * (indent + 2)).join(sorted('`' + task.getId() + '`' for task in listOfTasks)),
-        ' ' * 2 * (indent + 1),
-        ' ' * 2 * (indent + 2),
-        ('\n' + ' ' * 2 * (indent + 2)).join(sorted('`' + output.getId() + '`' for output in listOfOutputs)),
+        len(listOfOutputs),
     ))
     # execute tasks
     variable_results = {}
@@ -50,6 +44,7 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
         if task.isSedTask ():
             try:
                 current_state, variable_results_i= exec_task(doc,task,working_dir,external_variables_info,external_variables_values,current_state=None)
+                print('Task {} executed successfully'.format(task.getId()))
                 variable_results.update(variable_results_i)
             except Exception as exception:
                 print(exception)
