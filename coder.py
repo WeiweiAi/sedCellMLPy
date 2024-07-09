@@ -1,5 +1,5 @@
 from libcellml import Generator, GeneratorProfile, Printer
-from analyser import parse_model,analyse_model_full
+from analyser import parse_model,analyse_model_full,validate_model,resolve_imports,_ext_var_dic,analyse_model
 import os
 """
 =================
@@ -34,6 +34,52 @@ def writeCellML(model, full_path):
         f.write(serialised_model)   
 
     print('CellML model saved to:',full_path)
+
+def writeCellML_flat(model, full_path, base_dir,external_variables_info={},strict_mode=True):  
+    """ 
+    Write a flattend CellML model to a CellML file.
+
+    Parameters
+    ----------
+    model: Model
+        The CellML model to be written.
+    full_path: str
+        The full path of the CellML file (including the file name and extension).
+    base_dir: str
+        The base directory of the CellML model.
+    strict_mode: bool
+        If True, the model is checked against the CellML 2.0 specification.
+
+    Side effect
+    -----------
+    The CellML model is written to the specified file.
+    """
+    modelIsValid,issues_validate=validate_model(model)
+    if modelIsValid:
+        importer,issues_import=resolve_imports(model, base_dir,strict_mode)
+        if importer:
+            flatModel=importer.flattenModel(model)
+            if not flatModel:
+                return None, issues_import
+            else:  
+                printer = Printer()
+                serialised_model = printer.printModel(flatModel) 
+                with open(full_path, "w") as f:
+                    f.write(serialised_model)   
+
+                print('CellML model saved to:',full_path)
+                try:
+                    external_variables_dic=_ext_var_dic(flatModel,external_variables_info)
+                except ValueError as err:
+                    return None, str(err)           
+                analyser,issues_analyse=analyse_model(flatModel,external_variables_dic)
+                issues=issues_validate+issues_import+issues_analyse
+                
+                return flatModel, issues
+        else:
+            return None, issues_import
+    else:
+        return None, issues_validate    
 
 def writePythonCode(analyser, full_path):
     """ 
