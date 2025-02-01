@@ -244,8 +244,8 @@ def get_KISAO_parameters(algorithm):
                         integrator_parameters['rtol'] = float(p['value'])
                     elif p['kisaoID'] == 'KISAO:0000211':
                         integrator_parameters['atol'] = float(p['value'])
-                    elif p['kisaoID'] == 'KISAO:0000475':
-                        integrator_parameters['method'] = p['value']
+                    elif p['kisaoID'] == 'KISAO:0000475': 
+                        integrator_parameters['method'] = p['value'] # ‘adams’ or ‘bdf’
                     elif p['kisaoID'] == 'KISAO:0000415':
                         integrator_parameters['nsteps'] = int(p['value'])
                     elif p['kisaoID'] == 'KISAO:0000467':
@@ -1054,7 +1054,7 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
 
         temp_model, temp_model_source, model_etree = resolve_model_and_apply_xml_changes(model, doc, working_dir) # must set save_to_file=True
         cellml_model,parse_issues=parse_model(temp_model_source, False)
-        os.remove(full_path)
+        # os.remove(full_path)
         # cleanup modified model sources
         os.remove(temp_model_source)
         if not cellml_model:

@@ -98,8 +98,12 @@ def _initialize_module_ode(module, voi, external_variable=None, parameters={}):
     
     module.compute_computed_constants(variables)
     module.compute_computed_constants(variables) # Need to call it twice to update the computed constants;TODO: need to discuss with the libCellML team
-    module.compute_rates(voi, states, rates, variables)
-    module.compute_variables(voi, states, rates, variables)
+    if external_variable:
+        module.compute_rates(voi, states, rates, variables,external_variable)
+        module.compute_variables(voi, states, rates, variables,external_variable)
+    else: 
+        module.compute_rates(voi, states, rates, variables)
+        module.compute_variables(voi, states, rates, variables) 
 
     return states, rates, variables
 
@@ -143,7 +147,10 @@ def _initialize_module_algebraic(module,external_variable=None,parameters={}):
             raise ValueError('The parameter type {} is not supported!'.format(v['type']))
            
     module.compute_computed_constants(variables)
-    module.compute_variables(variables) 
+    if external_variable:
+        module.compute_variables(variables,external_variable)
+    else:
+        module.compute_variables(variables) 
 
     return variables
 

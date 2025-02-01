@@ -246,6 +246,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
     float
         The sum of residuals of all fit experiments.
     """
+    print('The current parameter values are:',param_vals)
     residuals_sum=0
     sed_results={}
     for fitid,fitExperiment in fitExperiments.items():
@@ -277,7 +278,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
             try:
                 current_state=sim_TimeCourse(mtype, module, sim_setting, observables, external_module,current_state=None,parameters=parameters)
                 sed_results = copy.deepcopy(current_state[-1])
-            except RuntimeError as exception:
+            except Exception as exception:
                 print(exception)
                 return 1e12
 
@@ -302,7 +303,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
                         #current_state=sim_OneStep(mtype, module, sim_setting, observables, external_module,current_state=None,parameters=parameters)
                         current_state=sim_UniformTimeCourse(mtype, module, sim_setting, observables, external_module,current_state=None,parameters=parameters)
                         sed_results = copy.deepcopy(current_state[-1])
-                    except RuntimeError as exception:
+                    except Exception as exception:
                         print(exception)
                         return 1e12
                 else:
@@ -311,7 +312,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
                         current_state=sim_UniformTimeCourse(mtype, module, sim_setting, observables, external_module,current_state=current_state,parameters=parameters)
                         for key, value in current_state[-1].items():
                             sed_results[key]=numpy.append(sed_results[key],value)
-                    except RuntimeError as exception:
+                    except Exception as exception:
                         print(exception)
                         return 1e12
         else:
@@ -339,4 +340,5 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
                 
         if math.isnan(residuals_sum):
             return 1e12
+    print('The current residuals sum is:',residuals_sum)
     return residuals_sum
