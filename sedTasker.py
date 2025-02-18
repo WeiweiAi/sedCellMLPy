@@ -10,7 +10,9 @@ import numpy
 import copy
 import math
 
-
+N_iter=0
+best_residuals_sum=1e12
+best_fitParameters=[]
 
 def exec_task(doc,task,working_dir,external_variables_info={},external_variables_values=[],current_state=None):
     """ Execute a SedTask.
@@ -206,12 +208,20 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     else:
         raise RuntimeError('Optimisation method not supported!')
     
+    global best_residuals_sum, best_fitParameters
+    i=0
+    print('The best residuals sum is:',best_residuals_sum)
+    for parameter in adjustableParameters_info.values():
+        print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
+        print(best_fitParameters[i])
+        i+=1
+    
+    print('Values of objective function at the solution: {}'.format(res.fun))
     i=0
     for parameter in adjustableParameters_info.values():
         print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
         print(res.x[i])
         i+=1
-    print('Values of objective function at the solution: {}'.format(res.fun))
     print('The full optimization result is:')
     print(res)
     return res
@@ -246,7 +256,8 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
     float
         The sum of residuals of all fit experiments.
     """
-    print('The current parameter values are:',param_vals)
+    global N_iter, best_residuals_sum, best_fitParameters
+    N_iter+=1
     residuals_sum=0
     sed_results={}
     for fitid,fitExperiment in fitExperiments.items():
@@ -301,7 +312,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
                 if i==0:
                     try:
                         #current_state=sim_OneStep(mtype, module, sim_setting, observables, external_module,current_state=None,parameters=parameters)
-                        current_state=sim_UniformTimeCourse(mtype, module, sim_setting, observables, external_module,current_state=None,parameters=parameters)
+                        current_state=sim_OneStep(mtype, module, sim_setting, observables, external_module,current_state=None,parameters=parameters)
                         sed_results = copy.deepcopy(current_state[-1])
                     except Exception as exception:
                         print(exception)
@@ -309,7 +320,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
                 else:
                     try:
                       #  current_state=sim_OneStep(mtype, module, sim_setting, observables, external_module,current_state=current_state,parameters=parameters)
-                        current_state=sim_UniformTimeCourse(mtype, module, sim_setting, observables, external_module,current_state=current_state,parameters=parameters)
+                        current_state=sim_OneStep(mtype, module, sim_setting, observables, external_module,current_state=None,parameters=parameters)
                         for key, value in current_state[-1].items():
                             sed_results[key]=numpy.append(sed_results[key],value)
                     except Exception as exception:
@@ -340,5 +351,10 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
                 
         if math.isnan(residuals_sum):
             return 1e12
-    print('The current residuals sum is:',residuals_sum)
+    if residuals_sum<best_residuals_sum:
+        best_residuals_sum=residuals_sum
+        best_fitParameters=param_vals
+    if N_iter%10==0:
+        print('Iteration:', N_iter, ',Parameter values:',param_vals)
+        print('Residuals sum:',residuals_sum)
     return residuals_sum
