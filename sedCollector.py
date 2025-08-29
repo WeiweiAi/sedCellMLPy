@@ -29,6 +29,7 @@ KISAO_ALGORITHMS = {'KISAO:0000030': 'Euler forward method',
                     'KISAO:0000088': 'LSODA',
                     'KISAO:0000087': 'dopri5',
                     'KISAO:0000436': 'dop853',
+                    'KISAO:0000019': 'CVODE',
                     }
 
 # https://docs.scipy.org/doc/scipy/reference/optimize.html
@@ -235,6 +236,8 @@ def get_KISAO_parameters(algorithm):
             for p in algorithm['listOfAlgorithmParameters']:
                 if p['kisaoID'] == 'KISAO:0000483':
                     integrator_parameters['step_size'] = float(p['value'])
+                else:
+                    raise ValueError('The algorithm parameter {} is not supported for the Euler forward method!'.format(p['kisaoID']))
 
     elif algorithm['kisaoID'] == 'KISAO:0000535':
             # VODE            
@@ -254,6 +257,8 @@ def get_KISAO_parameters(algorithm):
                         integrator_parameters['min_step'] = float(p['value'])
                     elif p['kisaoID'] == 'KISAO:0000484':
                         integrator_parameters['order'] = int(p['value'])
+                    else:
+                        raise ValueError('The algorithm parameter {} is not supported for the VODE method!'.format(p['kisaoID']))
     elif algorithm['kisaoID'] == 'KISAO:0000088':
         # LSODA
         if 'listOfAlgorithmParameters' in algorithm:
@@ -272,6 +277,8 @@ def get_KISAO_parameters(algorithm):
                     integrator_parameters['max_order_ns'] =int(p['value'])
                 elif p['kisaoID'] == 'KISAO:0000220':
                     integrator_parameters['max_order_s'] = int(p['value'])
+                else:
+                    raise ValueError('The algorithm parameter {} is not supported for the LSODA method!'.format(p['kisaoID']))
     elif algorithm['kisaoID'] == 'KISAO:0000087':
         # dopri5
         if 'listOfAlgorithmParameters' in algorithm:
@@ -286,6 +293,8 @@ def get_KISAO_parameters(algorithm):
                     integrator_parameters['max_step'] = float(p['value'])
                 elif p['kisaoID'] == 'KISAO:0000541':
                     integrator_parameters['beta'] = float(p['value'])
+                else:
+                    raise ValueError('The algorithm parameter {} is not supported for the dopri5 method!'.format(p['kisaoID']))
     elif algorithm['kisaoID'] == 'KISAO:0000436':
         # dop853
         if 'listOfAlgorithmParameters' in algorithm:
@@ -300,6 +309,30 @@ def get_KISAO_parameters(algorithm):
                     integrator_parameters['max_step'] = float(p['value'])
                 elif p['kisaoID'] == 'KISAO:0000541':
                     integrator_parameters['beta'] = float(p['value'])
+                else:
+                    raise ValueError('The algorithm parameter {} is not supported for the dop853 method!'.format(p['kisaoID']))
+    elif algorithm['kisaoID'] == 'KISAO:0000019':
+        # CVODE
+        if 'listOfAlgorithmParameters' in algorithm:
+            for p in algorithm['listOfAlgorithmParameters']:
+                if p['kisaoID'] == 'KISAO:0000209':
+                    integrator_parameters['rtol'] = float(p['value'])
+                elif p['kisaoID'] == 'KISAO:0000211':
+                    integrator_parameters['atol'] = float(p['value'])
+                elif p['kisaoID'] == 'KISAO:0000665':
+                    integrator_parameters['max_num_steps'] = int(p['value'])
+                elif p['kisaoID'] == 'KISAO:0000467':
+                    integrator_parameters['max_step'] = float(p['value'])
+                elif p['kisaoID'] == 'KISAO:0000485':
+                    integrator_parameters['min_step'] = float(p['value'])
+                elif p['kisaoID'] == 'KISAO:0000281': # multistep method: BDF or Adams
+                    integrator_parameters['method'] = p['value']
+                elif p['kisaoID'] == 'KISAO:0000477': # Choice of linear solver, defaults to ‘dense’. ‘band’ requires both ‘lband’ and ‘uband’. 
+                    integrator_parameters['linsolver'] = p['value']
+                elif p['kisaoID'] == 'KISAO:0000665': # Specifies the maximum number of nonlinear solver iterations in one step. The default is 3.. 
+                    integrator_parameters['max_nonlin_iters'] = int(p['value'])
+                else:
+                    raise ValueError('The algorithm parameter {} is not supported for the CVODE method!'.format(p['kisaoID']))
     else:
         print("The algorithm {} is not supported!".format(algorithm['kisaoID']))
         raise ValueError("The algorithm {} is not supported!".format(algorithm['kisaoID']))

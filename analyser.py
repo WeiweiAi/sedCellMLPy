@@ -191,6 +191,7 @@ def analyse_model(flatModel,external_variables_dic={}):
     if issues=='':
         return analyser, issues
     else:
+        print(issues)
         return analyser, issues # TODO: need to check when analyser is not None and issues is not empty.
         #return None, issues
     

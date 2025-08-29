@@ -1,4 +1,4 @@
-from solver import solve_euler, solve_scipy, algebra_evaluation, initialize_module
+from solver import solve_euler, solve_scipy, algebra_evaluation, initialize_module,solve_cvode
 from libcellml import AnalyserVariable
 from pathlib import PurePath
 import importlib.util
@@ -168,6 +168,13 @@ def sim_UniformTimeCourse(mtype, module, sim_setting, observables, external_modu
                                           sim_setting.method,sim_setting.integrator_parameters,external_module)
             except Exception as e:
                 raise RuntimeError(str(e)) from e 
+        elif sim_setting.method =='CVODE':
+            try:
+                current_state=solve_cvode(module, current_state, observables,
+                                          sim_setting.output_start_time, sim_setting.output_end_time,sim_setting.number_of_steps,
+                                          sim_setting.method,sim_setting.integrator_parameters,external_module)
+            except Exception as e:
+                raise RuntimeError(str(e)) from e
         else:
             print('The method {} is not supported!'.format(sim_setting.method))
             raise RuntimeError('The method {} is not supported!'.format(sim_setting.method))
@@ -541,7 +548,7 @@ class External_module_varies:
         else:
             raise ValueError("The external variable is not supported!")
 
-    def external_variable_ode(self,voi, states, rates, variables,index,result_index=0):
+    def external_variable_ode(self,voi, states, rates, variables,index,result_index):
         temp=self.param_vals[self.param_indices.index(index)]
         if isinstance(temp,  (int, float, numpy.int32, numpy.int64, numpy.float32, numpy.float64)):
             return temp

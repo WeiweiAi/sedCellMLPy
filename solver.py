@@ -1,6 +1,7 @@
 from scipy.integrate import ode
 import numpy as np
 import functools
+from sksundae.cvode import CVODE
 
 """
 ======
@@ -194,7 +195,7 @@ def initialize_module(mtype, observables, N, module, voi=0, external_module=None
     if mtype=='ode' or mtype=='dae':
         try:
             if external_module:
-                external_variable=external_module.external_variable_ode
+                external_variable=functools.partial(external_module.external_variable_ode,result_index=0)
             states, rates, variables=_initialize_module_ode(module,voi, external_variable,parameters)
         except ValueError as e:
             raise ValueError(e)         
@@ -243,8 +244,75 @@ def _update_rates(voi, states, rates, variables, module, external_variable=None)
     #    _update_variables(voi, states, rates, variables, module)
         module.compute_rates(voi, states, rates, variables)
         _update_variables(voi, states, rates, variables, module)
-    return rates    
+    return rates  
 
+def _update_rates_cvode(voi, states, rates, userdata=()):
+    """ Update the rates of the module.
+    Parameters
+    ----------
+    voi : float
+        The current value of the independent variable.
+    states : list
+        The current state of the system.
+    rates : list
+        The current rates of change of the system.
+    variables : list
+        The current variables of the system.
+    module : object
+        The module to update.
+    external_variable : object, optional
+        The function to specify external variable.
+
+    Returns
+    -------
+    list
+        The updated rates of change of the system.
+    """
+    variables, module, external_variable = userdata
+    if external_variable:
+     #  _update_variables(voi, states, rates, variables, module, external_variable)
+       module.compute_rates(voi, states, rates, variables,external_variable)
+       _update_variables(voi, states, rates, variables, module, external_variable)
+    else:
+    #    _update_variables(voi, states, rates, variables, module)
+        module.compute_rates(voi, states, rates, variables)
+        _update_variables(voi, states, rates, variables, module)
+    return rates   
+
+def _update_variables_cvode(voi, states, rates, userdata=()):
+    """ Update the variables of the module.
+    
+    Parameters
+    ----------
+    voi : float
+        The current value of the independent variable.
+    states : list
+        The current state of the system.
+    rates : list
+        The current rates of change of the system.
+    variables : list
+        The current variables of the system.
+    module : object
+        The module to update.    
+    external_variable : object, optional
+        The function to specify external variable.
+
+    Side effects
+    ------------
+    The variables of the module are updated.
+    
+    """
+    variables, module, external_variable = userdata
+    if external_variable:
+       if states is None and rates is None: # algebraic
+           module.compute_variables(variables,external_variable)
+       else:
+           module.compute_variables(voi, states, rates, variables,external_variable)
+    else:
+        if states is None and rates is None:
+            module.compute_variables(variables)
+        else:
+            module.compute_variables(voi, states, rates, variables)
 def _update_variables(voi, states, rates, variables, module, external_variable=None):
     """ Update the variables of the module.
     
@@ -473,8 +541,7 @@ def solve_scipy(module, current_state, observables, output_start_time, output_en
     voi, states, rates, variables, current_index, sed_results = current_state
     external_variable=None
     if external_module:
-            external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index) 
-    
+        external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index) 
     # Set the initial conditions and parameters
     solver = ode(_update_rates)
     solver.set_initial_value(states, voi)
@@ -528,6 +595,111 @@ def solve_scipy(module, current_state, observables, output_start_time, output_en
             # save observables
             _append_current_results(sed_results, current_index, observables, solver.t, solver.y, variables)
         current_state = (solver.t, solver.y, rates, variables, current_index, sed_results)
+    return current_state
+
+
+def solve_cvode(module, current_state, observables, output_start_time, output_end_time,
+                number_of_steps, method, integrator_parameters, external_module=None):
+    """ Use the CVODE integrator to solve the system from sksundae.
+
+    Parameters
+    ----------
+    module : object
+        The module to solve.
+    current_state : tuple
+        The current state of the module.
+        The format is (voi, states, rates, variables, current_index, sed_results).
+    observables : dict
+        The dictionary of the observables.
+    output_start_time : float
+        The start time of the output.
+    output_end_time : float
+        The end time of the output.
+    number_of_steps : int
+        The number of steps.
+    method : str
+        The name of the integrator.
+    integrator_parameters : dict
+        The parameters of the integrator.
+    external_variable : object, optional
+        The function to specify external variable. Default is None.
+
+    Raises
+    ------
+    RuntimeError
+        If the scipy.integrate.ode failed, a RuntimeError will be raised.
+    ValueError
+        If output_start_time, output_end_time, or number_of_steps is not valid.
+
+    Returns
+    -------
+    tuple
+        The current state of the module.
+        The format is (voi, states, rates, variables, current_index, sed_results).    
+    """
+    voi, states, rates, variables, current_index, sed_results = current_state
+    external_variable=None
+    if external_module:
+        external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index) 
+    
+    # Set the initial conditions and parameters
+    userdata=(variables, module, external_variable)
+    solver = CVODE(_update_rates_cvode, userdata=userdata, **integrator_parameters)
+    result =solver.init_step(voi,states)
+    #solver.set_f_params(rates, variables, module, external_variable)
+    #solver.set_integrator(method, **integrator_parameters)
+
+    if output_start_time > output_end_time or number_of_steps < 0:
+        raise ValueError('output_start_time must be less than output_end_time and number_of_steps must be greater than 0.')
+    elif output_start_time == output_end_time and number_of_steps>0:
+        raise ValueError('when output_start_time = output_end_time, number_of_steps must be 0.')
+    elif output_start_time < output_end_time and number_of_steps==0:
+        raise ValueError('when output_start_time < output_end_time, number_of_steps must be greater than 0.')
+    elif output_start_time == output_end_time and number_of_steps==0:
+        if voi > output_start_time:
+            raise ValueError('The current value of the independent variable is greater than output_start_time.')
+        elif voi == output_start_time:
+            return current_state
+        else: # voi < output_start_time
+            output_step_size = output_start_time-voi
+            # integrate to the output start point
+            n = abs((output_start_time - voi) / output_step_size)
+            for i in range(int(n)):               
+                result = solver.step(result.t + output_step_size,tstop=None)
+                if not result.success:
+                    raise RuntimeError(result.message)
+           # userdata=(variables, module, external_variable)
+            _update_variables_cvode(result.t, result.y, rates,userdata)
+            # save observables
+            _append_current_results(sed_results, current_index, observables, result.t, result.y, variables)
+            current_state = (result.t, result.y, rates, variables, current_index, sed_results)
+    else: # number_of_steps > 0 and output_start_time < output_end_time
+        if voi > output_start_time:
+            raise ValueError('The current value of the independent variable is greater than output_start_time.')       
+        # integrate to the output start point
+        if voi < output_start_time:
+            result = solver.step(result.t + (output_start_time - voi),tstop=None)
+            if not result.success:
+                    raise RuntimeError(result.message)
+        #userdata=(variables, module, external_variable)
+        _update_variables_cvode(result.t, result.y, rates,userdata)
+        # save observables
+        _append_current_results(sed_results, current_index, observables, result.t, result.y, variables)
+        # integrate to the output end point
+        output_step_size = (output_end_time - output_start_time) / number_of_steps
+        for i in range(number_of_steps):
+            current_index = current_index+1
+            if external_module:
+                external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
+           # userdata=(variables, module, external_variable)
+            result = solver.step(result.t + output_step_size,tstop=None)
+            if not result.success:
+                    raise RuntimeError(result.message)
+          #  userdata=(variables, module, external_variable)
+            _update_variables_cvode(result.t, result.y, rates,userdata)
+            # save observables
+            _append_current_results(sed_results, current_index, observables, result.t, result.y, variables)
+        current_state = (result.t, result.y, rates, variables, current_index, sed_results)
     return current_state
 
 def algebra_evaluation(module, current_state, observables, number_of_steps, external_module=None):
