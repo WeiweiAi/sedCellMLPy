@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model name="external_var" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <!-- Your code goes here-->
+    <units name="volt_per_sec">
+        <unit exponent="-1.0" units="second"/>
+        <unit units="volt"/>
+    </units>
+    <component name="test_external_var">
+        <variable initial_value="0" name="V" units="volt"/>
+        <variable name="time" units="second"/>
+        <variable name="external_var" public_interface="in" units="volt_per_sec"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>time</ci>
+                    </bvar>
+                    <ci>V</ci>
+                </apply>
+                <ci>external_var</ci>
+            </apply>
+        </math>
+    </component>
+</model>

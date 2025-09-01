@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sedML xmlns="http://sed-ml.org/sed-ml/level1/version4" level="1" version="4">
+  <listOfModels>
+    <model id="external_var_euler" language="urn:sedml:language:cellml" source="external_var.cellml"/>
+  </listOfModels>
+  <listOfSimulations>
+    <uniformTimeCourse id="sim_external_var_euler" initialTime="0" outputStartTime="0" outputEndTime="20" numberOfSteps="200">
+      <algorithm name="CVODE" kisaoID="KISAO:0000030"/>
+    </uniformTimeCourse>
+  </listOfSimulations>
+  <listOfTasks>
+    <task id="task_external_var_euler" modelReference="external_var_euler" simulationReference="sim_external_var_euler"/>
+  </listOfTasks>
+  <listOfDataGenerators>
+    <dataGenerator id="dg_external_var_euler_time" name="dg_external_var_euler_time">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> external_var_euler_time </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="external_var_euler_time" target="/cellml:model/cellml:component[@name=&quot;test_external_var&quot;]/cellml:variable[@name=&quot;time&quot;]" taskReference="task_external_var_euler" modelReference="external_var_euler"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_external_var_euler_external_var" name="dg_external_var_euler_external_var">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> external_var_euler_external_var </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="external_var_euler_external_var" target="/cellml:model/cellml:component[@name=&quot;test_external_var&quot;]/cellml:variable[@name=&quot;external_var&quot;]" taskReference="task_external_var_euler" modelReference="external_var_euler"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+    <dataGenerator id="dg_external_var_euler_V" name="dg_external_var_euler_V">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <times/>
+          <ci> external_var_euler_V </ci>
+          <ci> scale </ci>
+        </apply>
+      </math>
+      <listOfVariables>
+        <variable id="external_var_euler_V" target="/cellml:model/cellml:component[@name=&quot;test_external_var&quot;]/cellml:variable[@name=&quot;V&quot;]" taskReference="task_external_var_euler" modelReference="external_var_euler"/>
+      </listOfVariables>
+      <listOfParameters>
+        <parameter id="scale" value="1"/>
+      </listOfParameters>
+    </dataGenerator>
+  </listOfDataGenerators>
+  <listOfOutputs>
+    <report id="report_task_external_var_euler" name="report_task_external_var_euler">
+      <listOfDataSets>
+        <dataSet id="dataset_external_var_euler_time" label="time" dataReference="dg_external_var_euler_time"/>
+        <dataSet id="dataset_external_var_euler_external_var" label="external_var" dataReference="dg_external_var_euler_external_var"/>
+        <dataSet id="dataset_external_var_euler_V" label="V" dataReference="dg_external_var_euler_V"/>
+      </listOfDataSets>
+    </report>
+  </listOfOutputs>
+</sedML>
