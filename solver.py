@@ -277,7 +277,8 @@ def _update_rates_cvode(voi, states, rates, userdata=()):
     #    _update_variables(voi, states, rates, variables, module)
         module.compute_rates(voi, states, rates, variables)
         _update_variables(voi, states, rates, variables, module)
-    return rates   
+    userdata=(variables, module, external_variable)
+    return rates
 
 def _update_variables_cvode(voi, states, rates, userdata=()):
     """ Update the variables of the module.
@@ -313,6 +314,7 @@ def _update_variables_cvode(voi, states, rates, userdata=()):
             module.compute_variables(variables)
         else:
             module.compute_variables(voi, states, rates, variables)
+    userdata=(variables, module, external_variable)
 def _update_variables(voi, states, rates, variables, module, external_variable=None):
     """ Update the variables of the module.
     
@@ -664,11 +666,12 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
             output_step_size = output_start_time-voi
             # integrate to the output start point
             n = abs((output_start_time - voi) / output_step_size)
-            for i in range(int(n)):               
+            for i in range(int(n)):
+                userdata=(variables, module, external_variable)               
                 result = solver.step(result.t + output_step_size,tstop=None)
                 if not result.success:
                     raise RuntimeError(result.message)
-           # userdata=(variables, module, external_variable)
+            userdata=(variables, module, external_variable)
             _update_variables_cvode(result.t, result.y, rates,userdata)
             # save observables
             _append_current_results(sed_results, current_index, observables, result.t, result.y, variables)
@@ -681,7 +684,7 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
             result = solver.step(result.t + (output_start_time - voi),tstop=None)
             if not result.success:
                     raise RuntimeError(result.message)
-        #userdata=(variables, module, external_variable)
+        userdata=(variables, module, external_variable)
         _update_variables_cvode(result.t, result.y, rates,userdata)
         # save observables
         _append_current_results(sed_results, current_index, observables, result.t, result.y, variables)
@@ -691,11 +694,11 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
             current_index = current_index+1
             if external_module:
                 external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
-           # userdata=(variables, module, external_variable)
-            result = solver.step(result.t + output_step_size,tstop=None)
+            userdata=(variables, module, external_variable)
+            result = solver.step(result.t + output_step_size)
             if not result.success:
                     raise RuntimeError(result.message)
-          #  userdata=(variables, module, external_variable)
+            userdata=(variables, module, external_variable)
             _update_variables_cvode(result.t, result.y, rates,userdata)
             # save observables
             _append_current_results(sed_results, current_index, observables, result.t, result.y, variables)
