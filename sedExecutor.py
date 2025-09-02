@@ -23,7 +23,7 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
         The values of the external variables to be specified [value1, value2, ...]
     ss_time: dict, optional
         The time point for steady state simulation, in the format of {fitid:time}
-    
+
     """
     doc = doc.clone() # clone the document to avoid modifying the original document
     listOfTasks = doc.getListOfTasks()
@@ -48,7 +48,7 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
                 variable_results.update(variable_results_i)
             except Exception as exception:
                 print(exception)
-                return           
+                return
 
         elif task.isSedRepeatedTask ():
             raise RuntimeError('RepeatedTask not supported yet')
@@ -61,5 +61,4 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
                 return
     report_result = report_task(doc,task, variable_results, base_out_path, rel_out_path, report_formats =['csv'])
 
-                
-            
+

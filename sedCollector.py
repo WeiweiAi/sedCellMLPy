@@ -37,7 +37,7 @@ SCIPY_OPTIMIZE_LOCAL = ['Nelder-Mead','Powell','CG','BFGS','Newton-CG','L-BFGS-B
 KISAO_ALGORITHMS_OPT = {'KISAO:0000514': 'Nelder-Mead',
                     'KISAO:0000472': 'global optimization algorithm',
                     'KISAO:0000471': 'local optimization algorithm',
-                    'KISAO:0000503': 'simulated annealing',	
+                    'KISAO:0000503': 'simulated annealing',
                     'KISAO:0000520': 'evolutionary algorithm',
                     'KISAO:0000504': 'random search',
                     }
@@ -45,7 +45,7 @@ KISAO_ALGORITHMS_OPT = {'KISAO:0000514': 'Nelder-Mead',
 def read_sedml(file_name):
     """
     Read the SED-ML document from a file
-    
+
     Parameters
     ----------
     file_name: str
@@ -102,8 +102,8 @@ def get_variable_info_CellML(task_variables,model_etree):
 def get_KISAO_parameters_opt(algorithm):
     """Get the parameters of the KISAO algorithm.
     Args:
-        algorithm (:obj:`dict`): the algorithm of the optimization, 
-        the format is {'kisaoID': , 'name': 'optional,Euler forward method' , 
+        algorithm (:obj:`dict`): the algorithm of the optimization,
+        the format is {'kisaoID': , 'name': 'optional,Euler forward method' ,
         'listOfAlgorithmParameters':[dict_algorithmParameter] }
         dict_algorithmParameter={'kisaoID':'KISAO:0000483','value':'0.001'}
     Returns:
@@ -112,8 +112,8 @@ def get_KISAO_parameters_opt(algorithm):
             * :obj:`dict` or None: the parameters of the integrator, the format is {parameter: value}
     """
     opt_parameters = {}
-    if algorithm['kisaoID'] == 'KISAO:0000514': 
-        method = KISAO_ALGORITHMS_OPT[algorithm['kisaoID']]       
+    if algorithm['kisaoID'] == 'KISAO:0000514':
+        method = KISAO_ALGORITHMS_OPT[algorithm['kisaoID']]
         for p in algorithm['listOfAlgorithmParameters']:
             if p['kisaoID'] == 'KISAO:0000211':
                 opt_parameters['xatol'] = float(p['value'])
@@ -137,12 +137,12 @@ def get_KISAO_parameters_opt(algorithm):
 
 def get_dict_algorithm(sed_algorithm):
     """Get the information of an algorithm
-    
+
     Parameters
     ----------
     sed_algorithm: SedAlgorithm
         An instance of SedAlgorithm.
-    
+
     Raises
     ------
     ValueError
@@ -206,22 +206,22 @@ def get_dict_algorithm(sed_algorithm):
 
 def get_KISAO_parameters(algorithm):
     """Get the parameters of the KISAO algorithm.
-    
+
     Parameters
     ----------
     algorithm : dict
         The dictionary of the KISAO algorithm
         Format: {'kisaoID': , 'name': , 'listOfAlgorithmParameters': [{'kisaoID': , 'name': , 'value': }]}
-    
+
     Raises
     ------
     ValueError
         If the algorithm is not supported
-        
+
     Returns
     -------
     method : str
-        The method of the integration. 
+        The method of the integration.
         Now the supported methods are 'Euler forward method', 'VODE', 'LSODA', 'dopri5' and 'dop853'.
         None if the method is not supported.
     integrator_parameters : dict
@@ -240,14 +240,14 @@ def get_KISAO_parameters(algorithm):
                     raise ValueError('The algorithm parameter {} is not supported for the Euler forward method!'.format(p['kisaoID']))
 
     elif algorithm['kisaoID'] == 'KISAO:0000535':
-            # VODE            
+            # VODE
             if 'listOfAlgorithmParameters' in algorithm:
                 for p in algorithm['listOfAlgorithmParameters']:
                     if p['kisaoID'] == 'KISAO:0000209':
                         integrator_parameters['rtol'] = float(p['value'])
                     elif p['kisaoID'] == 'KISAO:0000211':
                         integrator_parameters['atol'] = float(p['value'])
-                    elif p['kisaoID'] == 'KISAO:0000475': 
+                    elif p['kisaoID'] == 'KISAO:0000475':
                         integrator_parameters['method'] = p['value'] # ‘adams’ or ‘bdf’
                     elif p['kisaoID'] == 'KISAO:0000415':
                         integrator_parameters['nsteps'] = int(p['value'])
@@ -327,16 +327,16 @@ def get_KISAO_parameters(algorithm):
                     integrator_parameters['min_step'] = float(p['value'])
                 elif p['kisaoID'] == 'KISAO:0000475': # multistep method: BDF or Adams
                     integrator_parameters['method'] = p['value']
-                elif p['kisaoID'] == 'KISAO:0000477': # Choice of linear solver, defaults to ‘dense’. ‘band’ requires both ‘lband’ and ‘uband’. 
+                elif p['kisaoID'] == 'KISAO:0000477': # Choice of linear solver, defaults to ‘dense’. ‘band’ requires both ‘lband’ and ‘uband’.
                     integrator_parameters['linsolver'] = p['value']
-                elif p['kisaoID'] == 'KISAO:0000665': # Specifies the maximum number of nonlinear solver iterations in one step. The default is 3.. 
+                elif p['kisaoID'] == 'KISAO:0000665': # Specifies the maximum number of nonlinear solver iterations in one step. The default is 3..
                     integrator_parameters['max_nonlin_iters'] = int(p['value'])
                 else:
                     raise ValueError('The algorithm parameter {} is not supported for the CVODE method!'.format(p['kisaoID']))
     else:
         print("The algorithm {} is not supported!".format(algorithm['kisaoID']))
         raise ValueError("The algorithm {} is not supported!".format(algorithm['kisaoID']))
-    
+
     return method, integrator_parameters
 
 def getSimSettingFromDict(dict_simulation):
@@ -350,12 +350,12 @@ def getSimSettingFromDict(dict_simulation):
         If the type is 'UniformTimeCourse', the format is {'type': 'UniformTimeCourse',
         'initialTime': 0.0, 'outputStartTime': 0.0, 'outputEndTime': 10.0, 'numberOfSteps': 100}
         If the type is 'SteadyState', the format is {'type': 'SteadyState'}
-    
+
     Raises
     ------
     ValueError
         If the type is not supported
-        
+
     Returns
     -------
     :obj:`SimSettings`: the simulation settings
@@ -376,9 +376,9 @@ def getSimSettingFromDict(dict_simulation):
         pass
     else:
         print('The simulation type {} is not supported!'.format(simSetting.type))
-        raise ValueError('The simulation type {} is not supported!'.format(simSetting.type))    
+        raise ValueError('The simulation type {} is not supported!'.format(simSetting.type))
     simSetting.method, simSetting.integrator_parameters=get_KISAO_parameters(dict_simulation['algorithm'])
-    
+
     return simSetting
 def get_dict_uniformTimeCourse(sim):
     """
@@ -388,7 +388,7 @@ def get_dict_uniformTimeCourse(sim):
     ----------
     sim: SedUniformTimeCourse
         An instance of SedUniformTimeCourse.
-    
+
     Raises
     ------
     ValueError
@@ -403,7 +403,7 @@ def get_dict_uniformTimeCourse(sim):
     dict
         The dictionary format:
         {'id':'timeCourse1', 'type': 'UniformTimeCourse','algorithm':dict_algorithm, 'initialTime':0.0,'outputStartTime':0.0,'outputEndTime':10.0,'numberOfSteps':1000}.
-   
+
     """
     dict_uniformTimeCourse = {}
     dict_uniformTimeCourse['id'] = sim.getId()
@@ -423,12 +423,12 @@ def get_dict_uniformTimeCourse(sim):
 def get_dict_oneStep(sim):
     """
     Get the information of a one step simulation
-    
+
     Parameters
     ----------
     sim: SedOneStep
         An instance of SedOneStep.
-    
+
     Raises
     ------
     ValueError
@@ -442,7 +442,7 @@ def get_dict_oneStep(sim):
     -------
     dict or bool
         The dictionary format: {'id':'oneStep1','type':'OneStep', 'step':0.1,'algorithm':dict_algorithm}
-        If the required attributes are not set, return False.    
+        If the required attributes are not set, return False.
     """
 
     dict_oneStep = {}
@@ -453,18 +453,18 @@ def get_dict_oneStep(sim):
     try:
         dict_algorithm = get_dict_algorithm(sed_algorithm)
     except ValueError as e:
-        raise  
+        raise
     dict_oneStep['algorithm']=dict_algorithm
     return dict_oneStep
 def get_dict_steadyState(sim):
     """
     Get the information of a steady state simulation
-    
+
     Parameters
     ----------
     sim: SedSteadyState
         An instance of SedSteadyState.
-    
+
     Raises
     ------
     ValueError
@@ -483,7 +483,7 @@ def get_dict_steadyState(sim):
     dict_steadyState['id'] = sim.getId()
     dict_steadyState['type'] = libsedml.SedTypeCode_toString(sim.getTypeCode())
     sed_algorithm = sim.getAlgorithm()
-    try:     
+    try:
         dict_algorithm = get_dict_algorithm(sed_algorithm)
     except ValueError as e:
         raise
@@ -498,13 +498,13 @@ def get_dict_simulation(sim):
     ----------
     sim: SedSimulation
         An instance of SedSimulation.
-    
+
     Raises
     ------
     ValueError
         If the simulation type is not defined.
         If get_dict_uniformTimeCourse(sim), get_dict_oneStep(sim) or get_dict_steadyState(sim) failed.
-    
+
     Notes
     -----
     Assume the simulation has been created successfully.
@@ -519,7 +519,7 @@ def get_dict_simulation(sim):
         If the simulation type is SteadyState, the dictionary format:
         {'id':'steadyState1','type':'SteadyState', 'algorithm':dict_algorithm}
     """
-    
+
     if not sim.isSedUniformTimeCourse() and not sim.isSedOneStep() and not sim.isSedSteadyState():
         raise ValueError('The simulation type is not defined.')
     try:
@@ -615,7 +615,7 @@ def get_variables_for_data_generators(data_generators):
         :obj:`set` of :obj:`SedVariables`: variables id involved in the data generators
     """
     variables = set()
-    sedVariables=[]    
+    sedVariables=[]
     for data_gen in data_generators:
         for sedVariable in data_gen.getListOfVariables ():
             if sedVariable.getId () not in variables:
@@ -633,12 +633,12 @@ def get_variables_for_data_generator(data_generator):
         :obj:`set` of :obj:`SedVariables`: variables id involved in the data generators
     """
     variables = set()
-    sedVariables=[]    
+    sedVariables=[]
     for sedVariable in data_generator.getListOfVariables ():
         if sedVariable.getId () not in variables:
             sedVariables.append(sedVariable)
         variables.add(sedVariable.getId ())
-    return sedVariables 
+    return sedVariables
 
 def get_model_changes_for_task(task):
     """ Get the changes to models for a task
@@ -656,34 +656,34 @@ def get_model_changes_for_task(task):
         changes = [task.getTaskChange(i) for i in range(task.getNumTaskChanges())]
 
         for sub_task in [task.getSubTask(i) for i in range(task.getNumSubTasks())]:
-            itask = sub_task.getTask()           
+            itask = sub_task.getTask()
             changes.extend(get_model_changes_for_task(doc.getTask(itask)))
         return changes
     else:
         print("Only SED tasks are supported.")
-        return []   
+        return []
 
 def get_models_referenced_by_task(doc,task):
     """ Get the models referenced from a task
-    
+
     Parameters
     ----------
     doc: :obj:`SedDocument`
         An instance of SedDocument
     task: :obj:`SedTask`
         An instance of SedTask
-    
+
     Raises
     ------
     ValueError
         If the task is not of type SedTask or SedRepeatedTask or SedParameterEstimationTask
-        
+
     Returns
     -------
     :obj:`list` of :obj:`SedModel`
         A list of SedModel objects
     """
- 
+
     if task.isSedTask ():
         models = set()
         if task.isSetModelReference ():
@@ -700,7 +700,7 @@ def get_models_referenced_by_task(doc,task):
             itask = doc.getTask(sub_task.getTask ())
             models.update(get_models_referenced_by_task(doc,itask))
             for change in sub_task.getListOfTaskChanges (): # newly added in Level 4
-                models.update(get_models_referenced_by_setValue(change)) 
+                models.update(get_models_referenced_by_setValue(change))
 
         if task.isSetRangeId (): # TODO: check if this is already covered by getListOfRanges
             irange = task.getRange(task.getRangeId ())
@@ -708,20 +708,20 @@ def get_models_referenced_by_task(doc,task):
 
         for range in  task.getListOfRanges ():
             models.update(get_models_referenced_by_range(task,range))
-        
+
         sedModels=[doc.getModel(modelReference) for modelReference in models]
         return sedModels
-    
+
     elif task.isSedParameterEstimationTask ():
         models = set()
         for adjustableParameter in task.getListOfAdjustableParameters ():
-            models.update(get_models_referenced_by_adjustableParameter(adjustableParameter)) 
+            models.update(get_models_referenced_by_adjustableParameter(adjustableParameter))
 
         sedModels=[doc.getModel(modelReference) for modelReference in models]
-        return sedModels        
+        return sedModels
     else:
         raise ValueError('Tasks of type `{}` are not supported.'.format(task.getTypeCode ()))
-    
+
 def get_models_referenced_by_range(task,range):
     """ Get the models referenced by a range
 
@@ -743,13 +743,13 @@ def get_models_referenced_by_setValue(task,setValue):
     """ Get the models referenced by a setValue
 
     Args:
-        task (:obj:`SedRepeatedTask `): SedRepeatedTask 
+        task (:obj:`SedRepeatedTask `): SedRepeatedTask
         setValue (:obj:`SedSetValue`): setValue
 
     Returns:
         :obj:`set` of :obj:`SedModel`: models
     """
-    
+
     models = set()
     models.add(setValue.getModelReference ())
     if setValue.isSetRange ():
@@ -765,11 +765,11 @@ def get_models_referenced_by_computedChange(change):
 
     Args:
         change (:obj:`SedComputedChange`): computedChange
-        
+
     Returns:
         :obj:`set` of :obj:`SedModel`: models
     """
-    models = set()  
+    models = set()
     if change.getListOfVariables ():
         models.update(get_models_referenced_by_listOfVariables(change.getListOfVariables))
     return models
@@ -780,10 +780,10 @@ def get_models_referenced_by_listOfVariables(listOfVariables):
 
     Args:
         listOfVariables (:obj:`list` of obj: ` sedVariables` )
-    
+
     Returns:
         :obj:`set` of :obj:`SedModel`: models
-    
+
     """
     models = set()
     for variable in listOfVariables:
@@ -821,7 +821,7 @@ def get_df_from_dataDescription(dataDescription, working_dir):
     -------
     :obj:`pandas.DataFrame`
         A pandas.DataFrame object
-    
+
     """
 
     source = dataDescription.getSource ()
@@ -845,7 +845,7 @@ def get_df_from_dataDescription(dataDescription, working_dir):
 
         if not os.path.isfile(os.path.join(working_dir, source)):
             raise FileNotFoundError('Data source file `{}` does not exist.'.format(source))
-    
+
     df = pandas.read_csv(filename, skipinitialspace=True,encoding='utf-8')
 
     return df
@@ -877,7 +877,7 @@ def get_value_of_dataSource(doc, dataSourceID,dfDict):
     :obj:`numpy.ndarray`
         A numpy.ndarray object
     """
-    
+
     dim1_value=None
     dim2_value=None
     dim1_present=False
@@ -892,9 +892,9 @@ def get_value_of_dataSource(doc, dataSourceID,dfDict):
                 df=dfDict[dataDescription.getId()]
                 dimensionDescription=dataDescription.getDimensionDescription ()
                 dim1_Description=dimensionDescription.get(0)
-                dim1_index=dim1_Description.getId() 
+                dim1_index=dim1_Description.getId()
                 dim2_Description=dim1_Description.get(0)
-                dim2_index=dim2_Description.getId()             
+                dim2_index=dim2_Description.getId()
                 if dataSource.isSetIndexSet ():# expect only using slice
                     raise ValueError('IndexSet is not supported.')
                 else:
@@ -909,7 +909,7 @@ def get_value_of_dataSource(doc, dataSourceID,dfDict):
                                 dim1_endIndex=sedSlice.getEndIndex ()
                         elif sedSlice.getReference ()==dim2_index:
                             dim2_present=True
-                            if sedSlice.isSetValue (): 
+                            if sedSlice.isSetValue ():
                                 dim2_value=sedSlice.getValue ()
                             if sedSlice.isSetStartIndex ():
                                 dim2_startIndex=sedSlice.getStartIndex ()
@@ -918,9 +918,9 @@ def get_value_of_dataSource(doc, dataSourceID,dfDict):
                         else:
                             raise ValueError('up to two slices supported')
 
-                    if dim1_present and (not dim2_present): 
+                    if dim1_present and (not dim2_present):
                         # get the value(s) at index=dim1_value or all values if dim1_value is not set then subdivide the values according to startIndex and endIndex
-                        # TODO: need to check if the understanding of the slice is correct   
+                        # TODO: need to check if the understanding of the slice is correct
                         if dim1_value is not None:
                             value=df.iloc[[dim1_value]]
                         elif dim1_startIndex is not None and dim1_endIndex is not None:
@@ -932,7 +932,7 @@ def get_value_of_dataSource(doc, dataSourceID,dfDict):
                         else:
                             value=df
                         return value.to_numpy()
-                    
+
                     elif dim2_present and (not dim1_present):
                         # get the value(s) of the column and then subdivide the values according to startIndex and endIndex
                         if dim2_value:
@@ -947,7 +947,7 @@ def get_value_of_dataSource(doc, dataSourceID,dfDict):
                             else:
                                 value=df_selected
                             return value.to_numpy()
-                        
+
                     elif dim1_present and dim2_present:
                         # get a single value at index=dim1_value and column=dim2_value
                         columnName=dim2_value
@@ -962,7 +962,7 @@ def get_adjustableParameters(model_etree,task):
     """
     Return a tuple containing adjustable parameter information.
     Assume the model is a CellML model.
-    
+
     Parameters
     ----------
     model_etree: :obj:`lxml.etree._ElementTree`
@@ -982,7 +982,7 @@ def get_adjustableParameters(model_etree,task):
         experimentReferences: dict, {index: [experimentId]}
         lowerBound: list, [lowerBound]
         upperBound: list, [upperBound]
-        initial_value: list, [initial_value]  
+        initial_value: list, [initial_value]
     """
     adjustableParameters_info={}
     experimentReferences={}
@@ -1013,7 +1013,7 @@ def get_adjustableParameters(model_etree,task):
         else:
             for experiment in task.getListOfExperiments():
                 experimentReferences[i].append(experiment.getId())
-        
+
     return adjustableParameters_info,experimentReferences,lowerBound,upperBound,initial_value
 
 def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
@@ -1047,9 +1047,9 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
         'model':model,'cellml_model':cellml_model,'analyser':analyser, 'module':module, 'mtype':mtype,
         'external_variables_info':external_variables_info,'param_indices':param_indices
         },
-        'adjustableParameters_info':adjustableParameters_info,'experimentReferences':experimentReferences,	
+        'adjustableParameters_info':adjustableParameters_info,'experimentReferences':experimentReferences,
         'lowerBound':lowerBound,'upperBound':upperBound,'initial_value':initial_value}
-    
+
     Note
     ----
     If the experimentalCondition (fitMapping) is an array, then treat it as external variable (input)
@@ -1059,7 +1059,7 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
     task_vars = get_variables_for_task(doc, task)
     if len(task_vars) == 0:
         print('Task does not record any variables.')
-        raise RuntimeError('Task does not record any variables.')  
+        raise RuntimeError('Task does not record any variables.')
     fitExperiments={}
     original_models = get_models_referenced_by_task(doc,task)
     model=original_models[0] # parameter estimation task should have only one model
@@ -1128,20 +1128,20 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
                 raise RuntimeError('Model parsing failed!')
         except ValueError as exception:
             print('Error in resolve_model_and_apply_xml_changes or parse_model:',exception)
-            raise exception   
+            raise exception
         sub_adjustableParameters_info={}
         adj_param_indices=[]
-        for i in range(len(experimentReferences)):         
+        for i in range(len(experimentReferences)):
             if fitExperiment.getId() in experimentReferences[i]:
                 sub_adjustableParameters_info.update({i:adjustableParameters_info[i]})
                 adj_param_indices.append(i)
-        
-        external_variables_info_new.update(sub_adjustableParameters_info) 
+
+        external_variables_info_new.update(sub_adjustableParameters_info)
         observables_exp={}
         observables_weight={}
         observables_info={}
-        fitExperiments[fitExperiment.getId()]['parameters']={} 
-        parameters_values=[]       
+        fitExperiments[fitExperiment.getId()]['parameters']={}
+        parameters_values=[]
         for fitMapping in fitExperiment.getListOfFitMappings ():
             if fitMapping.getTypeAsString ()=='time':
                 try:
@@ -1177,13 +1177,13 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
                         parameter_info = get_variable_info_CellML(sedVars,model_etree)
                         if isinstance (initial_value, np.ndarray):
                             external_variables_info_new.update(parameter_info)
-                            parameters_values.append(initial_value) 
+                            parameters_values.append(initial_value)
                         else:
                             fitExperiments[fitExperiment.getId()]['parameters'].update(parameter_info)
-                            fitExperiments[fitExperiment.getId()]['parameters'][sedVars[0].getId()]['value']=initial_value                       
+                            fitExperiments[fitExperiment.getId()]['parameters'][sedVars[0].getId()]['value']=initial_value
                     except ValueError as exception:
                         print('Error in get_variable_info_CellML:',exception)
-                        raise exception                          
+                        raise exception
             elif fitMapping.getTypeAsString ()=='observable':
                 try:
                     observable_exp=get_value_of_dataSource(doc, fitMapping.getDataSource(),dfDict)
@@ -1191,16 +1191,16 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
                     print('Error in get_value_of_dataSource:',exception)
                     raise exception
                 if observable_exp.ndim>1:
-                    raise ValueError('The observable {} is not 1D array!'.format(fitMapping.getDataSource()))             
+                    raise ValueError('The observable {} is not 1D array!'.format(fitMapping.getDataSource()))
                 dataGenerator=doc.getDataGenerator(fitMapping.getTarget())
                 sedVars=get_variables_for_data_generator(dataGenerator)
                 try:
                     observable_info = get_variable_info_CellML(sedVars,model_etree)
                 except ValueError as exception:
                     print('Error in get_variable_info_CellML:',exception)
-                    raise exception                                   
+                    raise exception
                 observables_info.update(observable_info)
-                key=dataGenerator.getId()                                                
+                key=dataGenerator.getId()
                 if fitMapping.isSetWeight():
                     weight=fitMapping.getWeight()
                     observables_weight.update({key:weight})
@@ -1220,15 +1220,15 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
                             observables_weight.update({key:pointWeight})
                 else:
                     raise ValueError('Fit mapping {} does not have a weight!'.format(fitMapping.getId()))
-                      
+
                 observables_exp.update({key:observable_exp})
 
             else:
                 raise ValueError('Fit mapping type {} is not supported!'.format(fitMapping.getTypeAsString ()))
-        
+
         model_base_dir=os.path.dirname(temp_model.getSource())
-                         
-        analyser, issues =analyse_model_full(cellml_model,model_base_dir,external_variables_info_new)       
+
+        analyser, issues =analyse_model_full(cellml_model,model_base_dir,external_variables_info_new)
         if analyser:
             mtype=get_mtype(analyser)
             # write Python code to a temporary file
@@ -1247,14 +1247,14 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
         fitExperiments[fitExperiment.getId()]['sim_setting']=sim_setting
         fitExperiments[fitExperiment.getId()].update({'cellml_model':cellml_model,'analyser':analyser, 'module':module, 'mtype':mtype,
                                                                             'external_variables_info':external_variables_info_new,
-                                                                'adj_param_indices':adj_param_indices,'parameters_values':parameters_values})      
-    return fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters,dfDict 
+                                                                'adj_param_indices':adj_param_indices,'parameters_values':parameters_values})
+    return fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters,dfDict
 
 def get_task_info(doc,task,working_dir,external_variables_info={},external_variables_values=[]):
     """ Collect information for a SedTask.
     The model is assumed to be in CellML format.
     The simulation type supported are UniformTimeCourse, OneStep and SteadyState.#TODO: add support for OneStep and SteadyState
-    The ode solver supported are listed in KISAO_ALGORITHMS 
+    The ode solver supported are listed in KISAO_ALGORITHMS
     Parameters
     ----------
     doc: :obj:`SedDocument`
@@ -1267,7 +1267,7 @@ def get_task_info(doc,task,working_dir,external_variables_info={},external_varia
         The external variables to be specified, in the format of {id:{'component': , 'name': }}
     external_variables_values: list, optional
         The values of the external variables to be specified [value1, value2, ...]
-        
+
     Raises
     ------
     RuntimeError
@@ -1277,17 +1277,17 @@ def get_task_info(doc,task,working_dir,external_variables_info={},external_varia
     -------
     tuple
         (tuple, dict)
-        The current state of the simulation and the variable results of the task. 
+        The current state of the simulation and the variable results of the task.
         The format of the current state is (voi, states, rates, variables, current_index, sed_results)
         The format of the variable results is {sedVar_id: numpy.ndarray}
-        numpy.ndarray is a 1D array of the variable values at each time point.   
+        numpy.ndarray is a 1D array of the variable values at each time point.
     """
 
     # get the model
     original_models = get_models_referenced_by_task(doc,task)
     if len(original_models) != 1:
         raise RuntimeError('Task must reference exactly one model.')
-    
+
     # get the variables recorded by the task
     task_vars = get_variables_for_task(doc, task)
     if len(task_vars) == 0:
@@ -1345,16 +1345,16 @@ def get_task_info(doc,task,working_dir,external_variables_info={},external_varia
         raise RuntimeError('Model parsing failed!')
     if not analyser:
         print('Model analysis failed!',issues)
-        raise RuntimeError('Model analysis failed!')           
-    
+        raise RuntimeError('Model analysis failed!')
+
     # get observables and simulation settings
     try:
         variables_info = get_variable_info_CellML(task_vars,model_etree)
         observables=get_observables(analyser,cellml_model,variables_info)
         sedSimulation=doc.getSimulation(task.getSimulationReference())
-        sim_setting=getSimSettingFromSedSim(sedSimulation) 
+        sim_setting=getSimSettingFromSedSim(sedSimulation)
     except ValueError as exception:
         print(exception)
-        raise RuntimeError(exception)    
+        raise RuntimeError(exception)
 
     return mtype, module, sim_setting, observables, external_variable,task_vars

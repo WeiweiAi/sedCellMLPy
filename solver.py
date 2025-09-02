@@ -41,7 +41,7 @@ def create_sed_results(observables, N):
         The dictionary is of the form {id: numpy.ndarray} where id is the
         identifier of the observable and the numpy.ndarray is of size N+1.
     """
-    
+
     sed_results = {}
     for id in observables.keys():
         sed_results.update({id: np.zeros(N+1)})
@@ -58,16 +58,16 @@ def _initialize_module_ode(module, voi, external_variable=None, parameters={}):
     external_variable : object, optional
         The function to specify external variable.
     parameters : dict, optional
-        The information to modify the parameters. 
+        The information to modify the parameters.
         The format is {id:{'name':'variable name','component':'component name',
         'type':'state','value':value,'index':index}}
-    
+
     Raises
     ------
     ValueError
-        If the initial value of voi or external variable is specified in the parameters, 
+        If the initial value of voi or external variable is specified in the parameters,
         a ValueError will be raised.
-        
+
     Returns
     -------
     tuple
@@ -75,7 +75,7 @@ def _initialize_module_ode(module, voi, external_variable=None, parameters={}):
 
     Notes
     -----
-    If the initial value of a state variable is specified in the parameters, 
+    If the initial value of a state variable is specified in the parameters,
     the initial value may not be modified accordingly.
     """
     rates = module.create_states_array()
@@ -84,9 +84,9 @@ def _initialize_module_ode(module, voi, external_variable=None, parameters={}):
 
     if external_variable:
         module.initialise_variables(voi,states, rates, variables,external_variable)
-    else:    
+    else:
        module.initialise_variables(states, rates, variables)
-    
+
     for id, v in parameters.items():
         if v['type'] == 'state':
             states[v['index']]=v['value']
@@ -96,15 +96,15 @@ def _initialize_module_ode(module, voi, external_variable=None, parameters={}):
             raise ValueError('The initial value of voi or external variable cannot be modified!')
         else:
             raise ValueError('The parameter type {} of is not supported!'.format(v['type']))
-    
+
     module.compute_computed_constants(variables)
     module.compute_computed_constants(variables) # Need to call it twice to update the computed constants;TODO: need to discuss with the libCellML team
     if external_variable:
         module.compute_rates(voi, states, rates, variables,external_variable)
         module.compute_variables(voi, states, rates, variables,external_variable)
-    else: 
+    else:
         module.compute_rates(voi, states, rates, variables)
-        module.compute_variables(voi, states, rates, variables) 
+        module.compute_variables(voi, states, rates, variables)
 
     return states, rates, variables
 
@@ -119,39 +119,39 @@ def _initialize_module_algebraic(module,external_variable=None,parameters={}):
     external_variable : object, optional
         The function to specify external variable.
     parameters : dict, optional
-        The information to modify the parameters. 
+        The information to modify the parameters.
         The format is {id:{'name':'variable name','component':'component name',
         'type':'state','value':value,'index':index}}
-    
+
     Raises
     ------
     ValueError
-        If other types of variables are specified in the parameters, 
+        If other types of variables are specified in the parameters,
         a ValueError will be raised.
-    
+
     Returns
     -------
     list
         A list containing the initialized variables.
-    """       
+    """
     variables = module.create_variables_array()
 
     if external_variable:
         module.initialise_variables(variables,external_variable)
     else:
         module.initialise_variables(variables)
-    
+
     for id, v in parameters.items():
         if v['type'] == 'constant' or v['type'] == 'computed_constant' and v['type'] == 'algebraic':
            variables[v['index']]=v['value']
         else:
             raise ValueError('The parameter type {} is not supported!'.format(v['type']))
-           
+
     module.compute_computed_constants(variables)
     if external_variable:
         module.compute_variables(variables,external_variable)
     else:
-        module.compute_variables(variables) 
+        module.compute_variables(variables)
 
     return variables
 
@@ -173,14 +173,14 @@ def initialize_module(mtype, observables, N, module, voi=0, external_module=None
         The initial value of the variable of integration. Defaults to 0.
     external_module : object, optional
     parameters : dict, optional
-        The information to modify the parameters. 
+        The information to modify the parameters.
         The format is {id:{'name':'variable name','component':'component name',
         'type':'state','value':value,'index':index}}
-    
+
     Raises
     ------
     ValueError
-        If the initial value of voi or external variable is specified in the parameters, 
+        If the initial value of voi or external variable is specified in the parameters,
         a ValueError will be raised.
 
     Returns
@@ -189,16 +189,16 @@ def initialize_module(mtype, observables, N, module, voi=0, external_module=None
         A tuple containing the current state of the module.
         The format is (voi, states, rates, variables, current_index, sed_results).
     """
-    sed_results=create_sed_results(observables, N)    
+    sed_results=create_sed_results(observables, N)
     external_variable=None
-    
+
     if mtype=='ode' or mtype=='dae':
         try:
             if external_module:
                 external_variable=functools.partial(external_module.external_variable_ode,result_index=0)
             states, rates, variables=_initialize_module_ode(module,voi, external_variable,parameters)
         except ValueError as e:
-            raise ValueError(e)         
+            raise ValueError(e)
         current_state = (voi, states, rates, variables, 0,sed_results)
 
     elif mtype=='algebraic':
@@ -211,7 +211,7 @@ def initialize_module(mtype, observables, N, module, voi=0, external_module=None
         current_state = (voi, None, None, variables, 0, sed_results)
     else:
         raise ValueError('The model type {} is not supported!'.format(mtype))
-    
+
     return current_state
 
 def _update_rates(voi, states, rates, variables, module, external_variable=None):
@@ -244,7 +244,7 @@ def _update_rates(voi, states, rates, variables, module, external_variable=None)
     #    _update_variables(voi, states, rates, variables, module)
         module.compute_rates(voi, states, rates, variables)
         _update_variables(voi, states, rates, variables, module)
-    return rates  
+    return rates
 
 def _update_rates_cvode(voi, states, rates, userdata=()):
     """ Update the rates of the module.
@@ -282,7 +282,7 @@ def _update_rates_cvode(voi, states, rates, userdata=()):
 
 def _update_variables_cvode(voi, states, rates, userdata=()):
     """ Update the variables of the module.
-    
+
     Parameters
     ----------
     voi : float
@@ -294,14 +294,14 @@ def _update_variables_cvode(voi, states, rates, userdata=()):
     variables : list
         The current variables of the system.
     module : object
-        The module to update.    
+        The module to update.
     external_variable : object, optional
         The function to specify external variable.
 
     Side effects
     ------------
     The variables of the module are updated.
-    
+
     """
     variables, module, external_variable = userdata
     if external_variable:
@@ -317,7 +317,7 @@ def _update_variables_cvode(voi, states, rates, userdata=()):
     userdata=(variables, module, external_variable)
 def _update_variables(voi, states, rates, variables, module, external_variable=None):
     """ Update the variables of the module.
-    
+
     Parameters
     ----------
     voi : float
@@ -329,14 +329,14 @@ def _update_variables(voi, states, rates, variables, module, external_variable=N
     variables : list
         The current variables of the system.
     module : object
-        The module to update.    
+        The module to update.
     external_variable : object, optional
         The function to specify external variable.
 
     Side effects
     ------------
     The variables of the module are updated.
-    
+
     """
     if external_variable:
        if states is None and rates is None: # algebraic
@@ -351,7 +351,7 @@ def _update_variables(voi, states, rates, variables, module, external_variable=N
 
 def _append_current_results(sed_results, index, observables, voi, states, variables):
     """ Append the current results to the results.
-    
+
     Parameters
     ----------
     sed_results : dict
@@ -371,7 +371,7 @@ def _append_current_results(sed_results, index, observables, voi, states, variab
 
     Side effects
     ------------
-    The current results are appended to the results.    
+    The current results are appended to the results.
     """
 
     for id, v in observables.items():
@@ -384,8 +384,8 @@ def _append_current_results(sed_results, index, observables, voi, states, variab
 
 def solve_euler(module, current_state, observables, output_start_time, output_end_time,
                 number_of_steps, step_size=None, external_module=None):
-    """ Euler method solver.	
-    
+    """ Euler method solver.
+
     Parameters
     ----------
     module : object
@@ -403,7 +403,7 @@ def solve_euler(module, current_state, observables, output_start_time, output_en
         The number of steps.
     step_size : float, optional
         The step size. Default is None.
-        When step_size is None, the step size is calculated based on the 
+        When step_size is None, the step size is calculated based on the
         output_start_time, output_end_time, and number_of_steps.
     external_variable : object, optional
         The function to specify external variable. Default is None.
@@ -419,12 +419,12 @@ def solve_euler(module, current_state, observables, output_start_time, output_en
     tuple
         The current state of the module.
         The format is (voi, states, rates, variables, current_index, sed_results).
-    """	
+    """
 
     voi, states, rates, variables, current_index, sed_results = current_state
     external_variable=None
     if external_module:
-            external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index) 
+            external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
 
     if output_start_time > output_end_time or number_of_steps < 0:
         raise ValueError('output_start_time must be less than output_end_time and number_of_steps must be greater than 0.')
@@ -449,7 +449,7 @@ def solve_euler(module, current_state, observables, output_start_time, output_en
             if n < 1:
                 rates=_update_rates(voi, states,  rates, variables, module, external_variable)
                 voi = output_start_time
-            for i in range(int(n)):       
+            for i in range(int(n)):
                 rates=_update_rates(voi, states,  rates, variables, module, external_variable)
                 delta = list(map(lambda var: var * step_size, rates))
                 states = [sum(x) for x in zip(states, delta)]
@@ -461,18 +461,18 @@ def solve_euler(module, current_state, observables, output_start_time, output_en
     else: # number_of_steps > 0 and output_start_time < output_end_time
         if voi > output_start_time:
             raise ValueError('The current value of the independent variable is greater than output_start_time.')
-        output_step_size = (output_end_time - output_start_time) / number_of_steps    
+        output_step_size = (output_end_time - output_start_time) / number_of_steps
         if step_size is None:
             step_size = output_step_size
         else:
             if step_size > output_step_size:
-                step_size = output_step_size # modify step_size to output_step_size update the states at least once 
+                step_size = output_step_size # modify step_size to output_step_size update the states at least once
         # integrate to the output start point
         n=abs((output_start_time-voi)/step_size)
         if n < 1:
             rates=_update_rates(voi, states,  rates, variables, module, external_variable)
             voi = output_start_time
-        for i in range(int(n)):       
+        for i in range(int(n)):
             rates=_update_rates(voi, states,  rates, variables, module, external_variable)
             delta = list(map(lambda var: var * step_size, rates))
             states = [sum(x) for x in zip(states, delta)]
@@ -494,7 +494,7 @@ def solve_euler(module, current_state, observables, output_start_time, output_en
                 voi += step_size
 
             _update_variables(voi, states, rates, variables, module, external_variable)
-            # save observables            
+            # save observables
             _append_current_results(sed_results, current_index, observables, voi, states, variables)
 
         current_state = (voi, states, rates, variables, current_index, sed_results)
@@ -538,12 +538,12 @@ def solve_scipy(module, current_state, observables, output_start_time, output_en
     -------
     tuple
         The current state of the module.
-        The format is (voi, states, rates, variables, current_index, sed_results).    
+        The format is (voi, states, rates, variables, current_index, sed_results).
     """
     voi, states, rates, variables, current_index, sed_results = current_state
     external_variable=None
     if external_module:
-        external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index) 
+        external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
     # Set the initial conditions and parameters
     solver = ode(_update_rates)
     solver.set_initial_value(states, voi)
@@ -575,7 +575,7 @@ def solve_scipy(module, current_state, observables, output_start_time, output_en
             current_state = (solver.t, solver.y, rates, variables, current_index, sed_results)
     else: # number_of_steps > 0 and output_start_time < output_end_time
         if voi > output_start_time:
-            raise ValueError('The current value of the independent variable is greater than output_start_time.')       
+            raise ValueError('The current value of the independent variable is greater than output_start_time.')
         # integrate to the output start point
         if voi < output_start_time:
             solver.integrate(solver.t + (output_start_time - voi))
@@ -637,13 +637,13 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
     -------
     tuple
         The current state of the module.
-        The format is (voi, states, rates, variables, current_index, sed_results).    
+        The format is (voi, states, rates, variables, current_index, sed_results).
     """
     voi, states, rates, variables, current_index, sed_results = current_state
     external_variable=None
     if external_module:
-        external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index) 
-    
+        external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
+
     # Set the initial conditions and parameters
     userdata=(variables, module, external_variable)
     solver = CVODE(_update_rates_cvode, userdata=userdata, **integrator_parameters)
@@ -667,7 +667,7 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
             # integrate to the output start point
             n = abs((output_start_time - voi) / output_step_size)
             for i in range(int(n)):
-                userdata=(variables, module, external_variable)               
+                userdata=(variables, module, external_variable)
                 result = solver.step(result.t + output_step_size,tstop=None)
                 if not result.success:
                     raise RuntimeError(result.message)
@@ -678,7 +678,7 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
             current_state = (result.t, result.y, rates, variables, current_index, sed_results)
     else: # number_of_steps > 0 and output_start_time < output_end_time
         if voi > output_start_time:
-            raise ValueError('The current value of the independent variable is greater than output_start_time.')       
+            raise ValueError('The current value of the independent variable is greater than output_start_time.')
         # integrate to the output start point
         if voi < output_start_time:
             result = solver.step(result.t + (output_start_time - voi),tstop=None)
@@ -707,7 +707,7 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
 
 def algebra_evaluation(module, current_state, observables, number_of_steps, external_module=None):
     """ Algebraic evaluation.
-    
+
     Parameters
     ----------
     module : object
@@ -739,10 +739,10 @@ def algebra_evaluation(module, current_state, observables, number_of_steps, exte
     for i in range(number_of_steps):
         current_index = current_index + 1
         if external_module:
-            external_variable=functools.partial(external_module.external_variable_algebraic,result_index=current_index)            
+            external_variable=functools.partial(external_module.external_variable_algebraic,result_index=current_index)
         _update_variables(current_index, None, None, variables, module, external_variable)
         _append_current_results(sed_results, current_index, observables, 0, None, variables)
 
     current_state = (voi, states, rates, variables, current_index, sed_results)
-   
+
     return current_state
