@@ -319,13 +319,13 @@ def get_KISAO_parameters(algorithm):
                     integrator_parameters['rtol'] = float(p['value'])
                 elif p['kisaoID'] == 'KISAO:0000211':
                     integrator_parameters['atol'] = float(p['value'])
-                elif p['kisaoID'] == 'KISAO:0000665':
+                elif p['kisaoID'] == 'KISAO:0000415':
                     integrator_parameters['max_num_steps'] = int(p['value'])
                 elif p['kisaoID'] == 'KISAO:0000467':
                     integrator_parameters['max_step'] = float(p['value'])
                 elif p['kisaoID'] == 'KISAO:0000485':
                     integrator_parameters['min_step'] = float(p['value'])
-                elif p['kisaoID'] == 'KISAO:0000281': # multistep method: BDF or Adams
+                elif p['kisaoID'] == 'KISAO:0000475': # multistep method: BDF or Adams
                     integrator_parameters['method'] = p['value']
                 elif p['kisaoID'] == 'KISAO:0000477': # Choice of linear solver, defaults to ‘dense’. ‘band’ requires both ‘lband’ and ‘uband’. 
                     integrator_parameters['linsolver'] = p['value']
