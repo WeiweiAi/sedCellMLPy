@@ -600,6 +600,21 @@ def solve_scipy(module, current_state, observables, output_start_time, output_en
     return current_state
 
 
+def external_variable(voi, states, rates, variables, index):
+    external_values = [1]*100+[2]*101
+
+    for i in range(0, len(external_values)-1):
+        voi0 = 0.1*i
+        voi1 = 0.1*(i+1)
+
+        if (voi >= voi0) and (voi < voi1):
+            value0 = external_values[i]
+
+            return value0 + (voi-voi0)/(voi1-voi0)*(external_values[i+1]-value0)
+
+    return external_values[-1]
+
+
 def solve_cvode(module, current_state, observables, output_start_time, output_end_time,
                 number_of_steps, method, integrator_parameters, external_module=None):
     """ Use the CVODE integrator to solve the system from sksundae.
@@ -640,9 +655,9 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
         The format is (voi, states, rates, variables, current_index, sed_results).
     """
     voi, states, rates, variables, current_index, sed_results = current_state
-    external_variable=None
-    if external_module:
-        external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
+    # external_variable=None
+    # if external_module:
+    #     external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
 
     # Set the initial conditions and parameters
     userdata=(variables, module, external_variable)
@@ -692,8 +707,8 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
         output_step_size = (output_end_time - output_start_time) / number_of_steps
         for i in range(number_of_steps):
             current_index = current_index+1
-            if external_module:
-                external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
+            # if external_module:
+            #     external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
             userdata=(variables, module, external_variable)
             result = solver.step(result.t + output_step_size)
             if not result.success:
