@@ -5,7 +5,13 @@
   </listOfModels>
   <listOfSimulations>
     <uniformTimeCourse id="sim_external_var_cvode" initialTime="0" outputStartTime="0" outputEndTime="20" numberOfSteps="200">
-      <algorithm name="CVODE" kisaoID="KISAO:0000019"/>
+      <algorithm name="CVODE" kisaoID="KISAO:0000019">
+        <listOfAlgorithmParameters>
+          <algorithmParameter name="max_step" kisaoID="KISAO:0000467" value="0.0001"/>
+          <algorithmParameter name="max_num_steps" kisaoID="KISAO:0000415" value="5000000"/>
+          <algorithmParameter name="rtol" kisaoID="KISAO:0000209" value="1e-7"/>
+        </listOfAlgorithmParameters>
+      </algorithm>
     </uniformTimeCourse>
   </listOfSimulations>
   <listOfTasks>

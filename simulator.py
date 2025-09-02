@@ -548,14 +548,25 @@ class External_module_varies:
         else:
             raise ValueError("The external variable is not supported!")
 
-    def external_variable_ode(self,voi, states, rates, variables,index,result_index):
-        temp=self.param_vals[self.param_indices.index(index)]
+    def external_variable_ode(self,voi, states, rates, variables,index):
+        if len(self.param_vals)==len(self.param_indices)+1:
+            time_points=self.param_vals[0] # the first element is the time points
+            temp=self.param_vals[self.param_indices.index(index)+1]
+        else:
+            temp=self.param_vals[self.param_indices.index(index)]
+            time_points=[i for i in range(len(temp))] # assume the time points are 0,1,2,...
         if isinstance(temp,  (int, float, numpy.int32, numpy.int64, numpy.float32, numpy.float64)):
             return temp
         elif isinstance(temp, list) or isinstance(temp, numpy.ndarray):
-            return temp[result_index]
+            for i in range(0, len(temp)-1):
+                voi0 = time_points[i]
+                voi1 = time_points[i+1]
+                if (voi >= voi0) and (voi < voi1):
+                    value0 = temp[i]
+                    return value0 + (voi-voi0)/(voi1-voi0)*(temp[i+1]-value0)
+            return temp[-1]
         elif isinstance(temp,types.FunctionType):
-            return temp(voi)
+            return temp(voi,states, rates, variables)
         else:
             raise ValueError("The external variable is not supported!")
 
@@ -593,8 +604,8 @@ def get_externals(mtype,analyser, cellml_model, external_variables_info, externa
     except ValueError as exception:
         print(exception)
         raise ValueError(exception)
-    
-    if len(param_indices)!=len(external_variables_values):
+
+    if not (len(param_indices)==len(external_variables_values) or len(param_indices)==len(external_variables_values)-1): # the length of the values can be either equal to or one greater than the indices (in case there is a column of time points)
         raise ValueError("The number of external variables does not match the number of external variables values!")
 
     if len(param_indices)==0:
@@ -641,8 +652,8 @@ def get_externals_varies(analyser, cellml_model, external_variables_info, extern
     except ValueError as exception:
         print(exception)
         raise ValueError(exception)
-    
-    if len(param_indices)!=len(external_variables_values):
+
+    if not (len(param_indices)==len(external_variables_values) or len(param_indices)==len(external_variables_values)-1): # the length of the values can be either equal to or one greater than the indices (in case there is a column of time points)
         raise ValueError("The number of external variables does not match the number of external variables values!")
 
     if len(param_indices)==0:

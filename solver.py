@@ -195,7 +195,7 @@ def initialize_module(mtype, observables, N, module, voi=0, external_module=None
     if mtype=='ode' or mtype=='dae':
         try:
             if external_module:
-                external_variable=functools.partial(external_module.external_variable_ode,result_index=0)
+                external_variable=external_module.external_variable_ode
             states, rates, variables=_initialize_module_ode(module,voi, external_variable,parameters)
         except ValueError as e:
             raise ValueError(e)         
@@ -424,7 +424,7 @@ def solve_euler(module, current_state, observables, output_start_time, output_en
     voi, states, rates, variables, current_index, sed_results = current_state
     external_variable=None
     if external_module:
-            external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index) 
+            external_variable=external_module.external_variable_ode 
 
     if output_start_time > output_end_time or number_of_steps < 0:
         raise ValueError('output_start_time must be less than output_end_time and number_of_steps must be greater than 0.')
@@ -486,7 +486,7 @@ def solve_euler(module, current_state, observables, output_start_time, output_en
         for i in range(int(number_of_steps)):
             current_index = current_index+1
             if external_module:
-                external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
+                external_variable=external_module.external_variable_ode
             for j in range(int(n)):
                 rates=_update_rates( voi, states,  rates, variables, module, external_variable)
                 delta = list(map(lambda var: var * step_size, rates))
@@ -543,7 +543,7 @@ def solve_scipy(module, current_state, observables, output_start_time, output_en
     voi, states, rates, variables, current_index, sed_results = current_state
     external_variable=None
     if external_module:
-        external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index) 
+        external_variable=external_module.external_variable_ode 
     # Set the initial conditions and parameters
     solver = ode(_update_rates)
     solver.set_initial_value(states, voi)
@@ -589,7 +589,7 @@ def solve_scipy(module, current_state, observables, output_start_time, output_en
         for i in range(number_of_steps):
             current_index = current_index+1
             if external_module:
-                external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
+                external_variable=external_module.external_variable_ode
             solver.integrate(solver.t + output_step_size)
             if not solver.successful():
                 raise RuntimeError('scipy.integrate.ode failed.')
@@ -642,7 +642,7 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
     voi, states, rates, variables, current_index, sed_results = current_state
     external_variable=None
     if external_module:
-        external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index) 
+        external_variable=external_module.external_variable_ode
     
     # Set the initial conditions and parameters
     userdata=(variables, module, external_variable)
@@ -693,7 +693,7 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
         for i in range(number_of_steps):
             current_index = current_index+1
             if external_module:
-                external_variable=functools.partial(external_module.external_variable_ode,result_index=current_index)
+                external_variable=external_module.external_variable_ode
             userdata=(variables, module, external_variable)
             result = solver.step(result.t + output_step_size)
             if not result.success:
