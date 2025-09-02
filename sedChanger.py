@@ -99,7 +99,7 @@ def get_value_of_variable_model_xml_targets(variable, model_etrees):
         :obj:`float`: value
     Note: only support explicit model elements and concept references
     """
-    if variable.unsetTarget (): # 
+    if variable.unsetTarget (): #
         raise NotImplementedError('Compute model change variable `{}` must have a target'.format(variable.getId()))
 
     if variable.getTarget ().startswith('#'):
@@ -133,7 +133,7 @@ def resolve_model(model, sed_doc, working_dir):
     """ Resolve the source of a model
 
     Side effects:
-        * Modifies the source of the model, 
+        * Modifies the source of the model,
           if the model needed to be resolved from a remote source
 
     Args:
@@ -147,7 +147,7 @@ def resolve_model(model, sed_doc, working_dir):
 
         sed_doc (:obj:`SedDocument`): parent SED document; used to resolve sources defined by reference to other models
         working_dir (:obj:`str`): working directory of the SED document (path relative to which models are located)
-    
+
     Raise:
         ValueError, NotImplementedError, FileNotFoundError
 
@@ -158,7 +158,7 @@ def resolve_model(model, sed_doc, working_dir):
             None, if the model did not need to be resolved from a remote source.
 
     """
-    source = model.getSource () 
+    source = model.getSource ()
 
     if source.lower().startswith('urn:'):
         if source.lower().startswith('urn:miriam:biomodels.db:'):
@@ -201,7 +201,7 @@ def resolve_model(model, sed_doc, working_dir):
         other_model = next((m for m in models if m.getId() == other_model_id), None)
         if other_model is None:
             raise ValueError('Relative model source `{}` does not exist.'.format(source))
-        
+
         model.setSource(other_model.getSource())
         for change in other_model.getListOfChanges ():
             model.addChange(change)
@@ -212,13 +212,13 @@ def resolve_model(model, sed_doc, working_dir):
         if os.path.isabs(source):
             model.setSource(source)
         else:
-            model.setSource(os.path.join(working_dir, source)) 
+            model.setSource(os.path.join(working_dir, source))
 
         if not os.path.isfile(model.getSource()):
             raise FileNotFoundError('Model source file `{}` does not exist.'.format(source))
 
         return None
-    
+
 def resolve_model_and_apply_xml_changes(orig_model, sed_doc, working_dir,
                                         apply_xml_model_changes=True, save_to_file=True,
                                         ):
@@ -237,11 +237,11 @@ def resolve_model_and_apply_xml_changes(orig_model, sed_doc, working_dir,
         working_dir (:obj:`str`): working directory of the SED document (path relative to which models are located)
         apply_xml_model_changes (:obj:`bool`, optional): if :obj:`True`, apply any model changes specified in the SED-ML file before
             calling :obj:`task_executer`.
-        save_to_file (:obj:`bool`): whether to save the resolved/modified model to a file       
-   
+        save_to_file (:obj:`bool`): whether to save the resolved/modified model to a file
+
     Raise:
-        ValueError    
-        
+        ValueError
+
     Returns:
         :obj:`tuple`:
 
@@ -257,7 +257,7 @@ def resolve_model_and_apply_xml_changes(orig_model, sed_doc, working_dir,
         temp_model_source = resolve_model(model, sed_doc, working_dir)
     except Exception as exception:
         raise ValueError('The model could not be resolved: {}'.format(str(exception)))
-    
+
     # apply changes to model
     if apply_xml_model_changes and model.isSetLanguage() and is_model_language_encoded_in_xml(model.getLanguage ()):
         # read model from file
@@ -279,13 +279,13 @@ def resolve_model_and_apply_xml_changes(orig_model, sed_doc, working_dir,
             modified_model_file, temp_model_source = tempfile.mkstemp(suffix='.xml',prefix=model.getId()+"_", dir=os.path.dirname(model.getSource()))
             os.close(modified_model_file)
             model.setSource(temp_model_source)
-        
+
         model_etree.write(model.getSource(),
                           xml_declaration=True,
                           encoding="utf-8",
                           standalone=False,
                           )
-        
+
 
     return model, model.getSource(), model_etree
 
@@ -309,10 +309,10 @@ def apply_changes_to_xml_model(model, model_etree,sed_doc=None, working_dir=None
             set value compute model change
         validate_unique_xml_targets (:obj:`bool`, optional): whether to validate the XML targets match
             uniue objects
-    
+
     Raise:
         NotImplementedError, ValueError
-            
+
     """
 
     # First pass:  Must-be-XML changes:

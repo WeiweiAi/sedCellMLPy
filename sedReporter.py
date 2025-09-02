@@ -225,7 +225,7 @@ def exec_report(report, variable_results, base_out_path, rel_out_path, formats, 
     doc=report.getSedDocument()
     for data_set in report.getListOfDataSets ():
         data_generators_ids.add(data_set.getDataReference ())
-    
+
     data_generators = [doc.getDataGenerator(data_generator_id) for data_generator_id in data_generators_ids]
 
     data_gen_results, data_gen_statuses, data_gen_exceptions, task_contributes_to_report = calc_data_generators_results(
@@ -266,7 +266,7 @@ def exec_report(report, variable_results, base_out_path, rel_out_path, formats, 
         if succeeded:
             status = 'SUCCEEDED'
         else:
-            status = 'RUNNING'	
+            status = 'RUNNING'
 
     else:
         status = 'QUEUED'
@@ -325,7 +325,7 @@ def calc_data_generators_results(data_generators, variable_results,task, make_sh
                 status = 'FAILED'
 
         else:
-            status = 'QUEUED'	
+            status = 'QUEUED'
             result = None
 
         statuses[data_gen.getId()] = status

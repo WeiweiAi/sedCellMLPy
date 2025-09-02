@@ -34,7 +34,7 @@ def exec_task(doc,task,working_dir,external_variables_info={},external_variables
         The values of the external variables to be specified [value1, value2, ...]
     current_state: tuple, optional
         The format is (voi, states, rates, variables, current_index, sed_results)
-    
+
     Raises
     ------
     RuntimeError
@@ -44,14 +44,14 @@ def exec_task(doc,task,working_dir,external_variables_info={},external_variables
     -------
     tuple
         (tuple, dict)
-        The current state of the simulation and the variable results of the task. 
+        The current state of the simulation and the variable results of the task.
         The format of the current state is (voi, states, rates, variables, current_index, sed_results)
         The format of the variable results is {sedVar_id: numpy.ndarray}
-        numpy.ndarray is a 1D array of the variable values at each time point.   
+        numpy.ndarray is a 1D array of the variable values at each time point.
     """
     mtype, module, sim_setting, observables, external_variable, task_vars = get_task_info(
         doc,task,working_dir,external_variables_info=external_variables_info,external_variables_values=external_variables_values)
-    
+
     if sim_setting.type=='UniformTimeCourse':
         try:
             current_state=sim_UniformTimeCourse(mtype, module, sim_setting, observables, external_variable, current_state,parameters={})
@@ -66,13 +66,13 @@ def exec_task(doc,task,working_dir,external_variables_info={},external_variables
             raise RuntimeError(exception)
     else:
         raise RuntimeError('Simulation type not supported!')
-    
+
     task_variable_results=current_state[-1]
     # check that the expected variables were recorded
     variable_results = {}
     if len(task_variable_results) > 0:
         for i,ivar in enumerate(task_vars):
-            variable_results[ivar.getId()] = task_variable_results.get(ivar.getId(), None)            
+            variable_results[ivar.getId()] = task_variable_results.get(ivar.getId(), None)
 
     return current_state, variable_results
 
@@ -86,7 +86,7 @@ def report_task(doc,task, variable_results, base_out_path, rel_out_path, report_
     task: :obj:`SedTask`
         The task to be executed.
     variable_results: dict
-        The variable results of the task. 
+        The variable results of the task.
         The format of the variable results is {sedVar_id: numpy.ndarray}
         numpy.ndarray is a 1D array of the variable values at each time point.
     base_out_path: str
@@ -98,7 +98,7 @@ def report_task(doc,task, variable_results, base_out_path, rel_out_path, report_
 
     report_formats: list, optional
         The formats of the reports to be generated. Default: ['csv']
-    
+
     Raises
     ------
     RuntimeError
@@ -109,9 +109,9 @@ def report_task(doc,task, variable_results, base_out_path, rel_out_path, report_
     Returns
     -------
     dict
-        The results of the reports. 
+        The results of the reports.
         The format of the results is {sedReport_id: numpy.ndarray}
-        numpy.ndarray is a 1D array of the report values at each time point.   
+        numpy.ndarray is a 1D array of the report values at each time point.
     """
 
     indent = 0
@@ -119,26 +119,26 @@ def report_task(doc,task, variable_results, base_out_path, rel_out_path, report_
     report_results = {}
 
     task_contributes_to_output = False
-        
+
     for i_output, output in enumerate(listOfOutputs):
         print('{}Generating output {}: `{}` ...'.format(' ' * 2 * (indent + 2), i_output + 1, output.getId()), end='')
         sys.stdout.flush()
         if output.isSedReport ():
             output_result, output_status, output_exception, task_contributes_to_report = exec_report(
                 output, variable_results, base_out_path, rel_out_path,  report_formats, task)
-            
+
             print(' {}'.format(output_status))
             if output_exception:
                 print('{}'.format(output_exception))
                 raise RuntimeError(output_exception)
-            
-            task_contributes_to_output = task_contributes_to_output or task_contributes_to_report   
+
+            task_contributes_to_output = task_contributes_to_output or task_contributes_to_report
         else:
             # only reports are supported for now
             raise NotImplementedError('Outputs of type {} are not supported.'.format(output.getTypeCode ()))
         if  output_result is not None:
             report_results[output.getId()] = output_result
-    
+
     if not task_contributes_to_output:
         print('Task {} does not contribute to any outputs.'.format(task.getId()))
 
@@ -178,19 +178,19 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     -------
     res: scipy.optimize.OptimizeResult
 
-    """ 	     
+    """
     # get optimisation settings and fit experiments
-    
+
     fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters, dfDict=get_fit_experiments(doc,task,working_dir,external_variables_info)
     if 'tol' in opt_parameters:
         tol=opt_parameters['tol']
     else:
         tol=1e-8
     if 'maxiter' in opt_parameters:
-        maxiter=int(opt_parameters['maxiter']) 
+        maxiter=int(opt_parameters['maxiter'])
     else:
         maxiter=1000
-    
+
     bounds=Bounds(adjustables[0],adjustables[1])
     initial_value=adjustables[2]
     if method=='global optimization algorithm':
@@ -203,11 +203,11 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     elif method=='random search':
         res=basinhopping(objective_function, initial_value,minimizer_kwargs={'args':(external_variables_values, fitExperiments, doc, ss_time,cost_type)}) # cannot use bounds
     elif method=='local optimization algorithm':
-        res=least_squares(objective_function, initial_value, args=(external_variables_values, fitExperiments, doc, ss_time,cost_type), 
+        res=least_squares(objective_function, initial_value, args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),
                  bounds=bounds, ftol=tol, gtol=tol, xtol=tol, max_nfev=maxiter)
     else:
         raise RuntimeError('Optimisation method not supported!')
-    
+
     global best_residuals_sum, best_fitParameters
     i=0
     print('The best residuals sum is:',best_residuals_sum)
@@ -215,7 +215,7 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
         print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
         print(best_fitParameters[i])
         i+=1
-    
+
     print('Values of objective function at the solution: {}'.format(res.fun))
     i=0
     for parameter in adjustableParameters_info.values():
@@ -237,9 +237,9 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
     external_variables_values: list
         The values of the external variables to be specified [value1, value2, ...]
     fitExperiments: dict
-        The fit experiments to be specified, 
-        in the format of {fitid:{'external_variables_info': , 'cellml_model': , 'analyser': , 
-        'mtype': , 'module': , 'fitness_info': , 'parameters': , 'parameters_values': , 
+        The fit experiments to be specified,
+        in the format of {fitid:{'external_variables_info': , 'cellml_model': , 'analyser': ,
+        'mtype': , 'module': , 'fitness_info': , 'parameters': , 'parameters_values': ,
         'adj_param_indices': , 'type': , 'sim_setting': }}
     doc: :obj:`SedDocument`
         An instance of SedDocument
@@ -269,7 +269,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
         module=fitExperiment['module']
         fitness_info=fitExperiment['fitness_info']
         parameters_info=fitExperiment['parameters']
-        parameters_values=fitExperiment['parameters_values']         
+        parameters_values=fitExperiment['parameters_values']
         for param_index in fitExperiment['adj_param_indices']:
             sub_param_vals.append(param_vals[param_index])
         simulation_type=fitExperiment['type']
@@ -278,9 +278,9 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
         observables=get_observables(analyser,cellml_model,observables_info)
         parameters=get_observables(analyser,cellml_model,parameters_info)
         observables_weight=fitness_info[1]
-        observables_exp=fitness_info[2]       
+        observables_exp=fitness_info[2]
         if simulation_type=='timeCourse':
-            external_variables_values_extends=external_variables_values+sub_param_vals+parameters_values    
+            external_variables_values_extends=external_variables_values+sub_param_vals+parameters_values
             try:
                 external_module=get_externals_varies(analyser, cellml_model, external_variables_info, external_variables_values_extends)
             except ValueError as exception:
@@ -297,7 +297,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
             observable_exp_temp=observables_exp[list(observables_exp.keys())[0]]
             for i in range(len(observable_exp_temp)): # assume all observables and experimental conditions have the same number of data points
                 sim_setting.step=ss_time[fitid]
-                sim_setting.output_start_time=sim_setting.step 
+                sim_setting.output_start_time=sim_setting.step
                 sim_setting.output_end_time=sim_setting.step
                 sim_setting.number_of_steps=0
                 parameters_value=[]
@@ -328,7 +328,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
                         return 1e12
         else:
             raise RuntimeError('Simulation type not supported!')
-        
+
         residuals={}
         for key, exp_value in observables_exp.items():
             dataGenerator=doc.getDataGenerator(key)
@@ -345,10 +345,10 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
             elif cost_type is None or cost_type=='MSE':
                 # MSE is the default cost function
                 residuals[key]=(sim_value-exp_value)**2
-                residuals_sum+=numpy.sum(residuals[key]*observables_weight[key])/len(exp_value)              
+                residuals_sum+=numpy.sum(residuals[key]*observables_weight[key])/len(exp_value)
             else:
                 raise RuntimeError('Cost type not supported!')
-                
+
         if math.isnan(residuals_sum):
             return 1e12
     if residuals_sum<best_residuals_sum:

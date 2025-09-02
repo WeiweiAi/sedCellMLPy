@@ -12,8 +12,8 @@ The following functions are defined:
     * writePythonCode: generate python file from a CellML model.
 """
 
-def writeCellML(model, full_path):  
-    """ 
+def writeCellML(model, full_path):
+    """
     Write a CellML model to a CellML file.
 
     Parameters
@@ -27,16 +27,16 @@ def writeCellML(model, full_path):
     -----------
     The CellML model is written to the specified file.
     """
-    
+
     printer = Printer()
-    serialised_model = printer.printModel(model) 
+    serialised_model = printer.printModel(model)
     with open(full_path, "w") as f:
-        f.write(serialised_model)   
+        f.write(serialised_model)
 
     print('CellML model saved to:',full_path)
 
-def writeCellML_flat(model, full_path, base_dir,external_variables_info={},strict_mode=True):  
-    """ 
+def writeCellML_flat(model, full_path, base_dir,external_variables_info={},strict_mode=True):
+    """
     Write a flattend CellML model to a CellML file.
 
     Parameters
@@ -61,28 +61,28 @@ def writeCellML_flat(model, full_path, base_dir,external_variables_info={},stric
             flatModel=importer.flattenModel(model)
             if not flatModel:
                 return None, issues_import
-            else:  
+            else:
                 printer = Printer()
-                serialised_model = printer.printModel(flatModel) 
+                serialised_model = printer.printModel(flatModel)
                 with open(full_path, "w") as f:
-                    f.write(serialised_model)   
+                    f.write(serialised_model)
 
                 print('CellML model saved to:',full_path)
                 try:
                     external_variables_dic=_ext_var_dic(flatModel,external_variables_info)
                 except ValueError as err:
-                    return None, str(err)           
+                    return None, str(err)
                 analyser,issues_analyse=analyse_model(flatModel,external_variables_dic)
                 issues=issues_validate+issues_import+issues_analyse
-                
+
                 return flatModel, issues
         else:
             return None, issues_import
     else:
-        return None, issues_validate    
+        return None, issues_validate
 
 def writePythonCode(analyser, full_path):
-    """ 
+    """
     Generate Python code from a CellML model
     and write the code to the specified file.
 
@@ -102,12 +102,12 @@ def writePythonCode(analyser, full_path):
     generator.setModel(analyser.model())
     profile = GeneratorProfile(GeneratorProfile.Profile.PYTHON)
     generator.setProfile(profile)
-    implementation_code_python = generator.implementationCode()                   
+    implementation_code_python = generator.implementationCode()
     with open(full_path, "w") as f:
         f.write(implementation_code_python)
 
 def toCellML2(oldPath, newPath, external_variables_info={},strict_mode=True, py_full_path=None):
-    """ 
+    """
     Convert a CellML 1.X model to CellML 2.0.
 
     Parameters
@@ -122,7 +122,7 @@ def toCellML2(oldPath, newPath, external_variables_info={},strict_mode=True, py_
     strict_mode: bool
         If True, the model is checked against the CellML 2.0 specification.
     py_full_path: str
-        The full path of the python file (including the file name and extension).    
+        The full path of the python file (including the file name and extension).
 
     Side effect
     -----------
@@ -132,7 +132,7 @@ def toCellML2(oldPath, newPath, external_variables_info={},strict_mode=True, py_
     try:
         model_parse, issues=parse_model(oldPath, False)
     except Exception as e:
-        print(e)  
+        print(e)
     print(issues)
     writeCellML(model_parse,newPath)
     base_dir=os.path.dirname(newPath)
@@ -140,4 +140,3 @@ def toCellML2(oldPath, newPath, external_variables_info={},strict_mode=True, py_
     print(issues)
     if py_full_path is not None:
         writePythonCode(analyser, py_full_path)
-    

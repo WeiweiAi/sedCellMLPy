@@ -205,4 +205,4 @@ def eval_math(math, compiled_math, workspace):
             math, str(exception), '\n    '.join('{}: {}'.format(key, value) for key, value in workspace.items())))
 
 
-    
+
