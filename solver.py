@@ -681,6 +681,7 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
             raise ValueError('The current value of the independent variable is greater than output_start_time.')       
         # integrate to the output start point
         if voi < output_start_time:
+            userdata=(variables, module, external_variable) 
             result = solver.step(result.t + (output_start_time - voi),tstop=None)
             if not result.success:
                     raise RuntimeError(result.message)
@@ -692,8 +693,6 @@ def solve_cvode(module, current_state, observables, output_start_time, output_en
         output_step_size = (output_end_time - output_start_time) / number_of_steps
         for i in range(number_of_steps):
             current_index = current_index+1
-            if external_module:
-                external_variable=external_module.external_variable_ode
             userdata=(variables, module, external_variable)
             result = solver.step(result.t + output_step_size)
             if not result.success:

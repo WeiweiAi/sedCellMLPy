@@ -354,6 +354,21 @@ def sim_TimeCourse(mtype, module, sim_setting, observables, external_module,curr
                                               sim_setting.method,sim_setting.integrator_parameters,external_module)
                 except Exception as e:
                     raise e from e
+        elif sim_setting.method =='CVODE':
+            for i in range(number_of_steps):
+                try:
+                    current_state=solve_cvode(module, current_state, observables,
+                                              sim_setting.tspan[i], sim_setting.tspan[i+1],1,
+                                              sim_setting.method,sim_setting.integrator_parameters,external_module)
+                except Exception as e:
+                    raise RuntimeError(str(e)) from e
+            if number_of_steps==0:
+                try:
+                    current_state=solve_cvode(module, current_state, observables,
+                                              sim_setting.tspan[0], sim_setting.tspan[0],0,
+                                              sim_setting.method,sim_setting.integrator_parameters,external_module)
+                except Exception as e:
+                    raise RuntimeError(str(e)) from e
         else:
             print('The method {} is not supported!'.format(sim_setting.method))
             raise RuntimeError('The method {} is not supported!'.format(sim_setting.method))
@@ -430,6 +445,13 @@ def sim_SteadyState(mtype, module, sim_setting, observables, external_module, cu
             elif sim_setting.method in SCIPY_SOLVERS:
                 try:
                     current_state=solve_scipy(module, current_state, observables,
+                                              t0, tf, sim_setting.number_of_steps,
+                                              sim_setting.method,sim_setting.integrator_parameters,external_module)
+                except RuntimeError as e:
+                    raise e from e
+            elif sim_setting.method =='CVODE':
+                try:
+                    current_state=solve_cvode(module, current_state, observables,
                                               t0, tf, sim_setting.number_of_steps,
                                               sim_setting.method,sim_setting.integrator_parameters,external_module)
                 except RuntimeError as e:
