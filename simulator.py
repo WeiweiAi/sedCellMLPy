@@ -257,6 +257,13 @@ def sim_OneStep(mtype, module, sim_setting, observables, external_module, curren
                                           sim_setting.method,sim_setting.integrator_parameters,external_module)
             except Exception as e:
                 raise RuntimeError(str(e)) from e 
+        elif sim_setting.method =='CVODE':
+            try:
+                current_state=solve_cvode(module, current_state, observables,
+                                          output_start_time, output_end_time,0,
+                                          sim_setting.method,sim_setting.integrator_parameters,external_module)
+            except Exception as e:
+                raise RuntimeError(str(e)) from e
         else:
             print('The method {} is not supported!'.format(sim_setting.method))
             raise RuntimeError('The method {} is not supported!'.format(sim_setting.method))
