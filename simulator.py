@@ -583,10 +583,12 @@ class External_module_varies:
             temp=self.param_vals[self.param_indices.index(index)+1]
         else:
             temp=self.param_vals[self.param_indices.index(index)]
-            time_points=[i for i in range(len(temp))] # assume the time points are 0,1,2,...
+            time_points=None 
         if isinstance(temp,  (int, float, numpy.int32, numpy.int64, numpy.float32, numpy.float64)):
             return temp
         elif isinstance(temp, list) or isinstance(temp, numpy.ndarray):
+            if time_points is None:
+                time_points=list(range(0,len(temp)))
             for i in range(0, len(temp)-1):
                 voi0 = time_points[i]
                 voi1 = time_points[i+1]
