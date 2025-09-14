@@ -2,8 +2,7 @@ from sedCollector import  get_fit_experiments, get_task_info
 from sedChanger import calc_data_generator_results
 from simulator import sim_UniformTimeCourse, get_observables, sim_OneStep, sim_TimeCourse,get_externals_varies
 from sedReporter import exec_report
-import tempfile
-import os
+import json
 import sys
 from scipy.optimize import Bounds,least_squares,shgo,dual_annealing,differential_evolution,basinhopping
 import numpy
@@ -208,22 +207,35 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     else:
         raise RuntimeError('Optimisation method not supported!')
     
+    listOfTasks = doc.getListOfTasks()
+    task=listOfTasks[0]
+    fit_res_json=working_dir+'/'+ task.getId()+'.json'
+    fit_results={}
+    fit_results['best']={}
     global best_residuals_sum, best_fitParameters
     i=0
     print('The best residuals sum is:',best_residuals_sum)
     for parameter in adjustableParameters_info.values():
         print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
         print(best_fitParameters[i])
+        fit_results['best'][parameter['name']]={}
+        fit_results['best'][parameter['name']]={'component':parameter['component'],'name':parameter['name'],'newValue':best_fitParameters[i]}
         i+=1
     
     print('Values of objective function at the solution: {}'.format(res.fun))
     i=0
+    fit_results['solution']={}
     for parameter in adjustableParameters_info.values():
         print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
         print(res.x[i])
+        fit_results['solution'][parameter['name']]={}
+        fit_results['solution'][parameter['name']]={'component':parameter['component'],'name':parameter['name'],'newValue':res.x[i]}
         i+=1
     print('The full optimization result is:')
     print(res)
+    # save fit results to json file
+    with open(fit_res_json, 'w') as outfile:
+        json.dump(fit_results, outfile)
     return res
 
 def objective_function(param_vals, external_variables_values, fitExperiments, doc, ss_time,cost_type=None):
