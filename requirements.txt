@@ -7,14 +7,14 @@ lxml==5.2.1
 meson==1.7.0
 mpmath==1.3.0
 ninja==1.11.1.3
-numpy==2.2.2
+numpy==2.0.2
 pandas==2.2.2
 python-dateutil==2.9.0.post0
 python-libsedml==2.0.32
 pytz==2024.1
 requests==2.31.0
 scikit-sundae==1.0.3
-scipy==1.16.1
+scipy==1.13.1
 six==1.16.0
 tzdata==2024.1
 urllib3==2.2.1
