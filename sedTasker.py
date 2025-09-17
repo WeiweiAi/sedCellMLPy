@@ -215,12 +215,13 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     global best_residuals_sum, best_fitParameters
     i=0
     print('The best residuals sum is:',best_residuals_sum)
-    for parameter in adjustableParameters_info.values():
-        print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
-        print(best_fitParameters[i])
-        fit_results['best'][parameter['name']]={}
-        fit_results['best'][parameter['name']]={'component':parameter['component'],'name':parameter['name'],'newValue':best_fitParameters[i]}
-        i+=1
+    if len(best_fitParameters)>0:
+        for parameter in adjustableParameters_info.values():
+            print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
+            print(best_fitParameters[i])
+            fit_results['best'][parameter['name']]={}
+            fit_results['best'][parameter['name']]={'component':parameter['component'],'name':parameter['name'],'newValue':best_fitParameters[i]}
+            i+=1
     
     print('Values of objective function at the solution: {}'.format(res.fun))
     i=0
