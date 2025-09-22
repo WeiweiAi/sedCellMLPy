@@ -8,6 +8,7 @@ from scipy.optimize import Bounds,least_squares,shgo,dual_annealing,differential
 import numpy
 import copy
 import math
+import os
 
 N_iter=0
 best_residuals_sum=1e12
@@ -209,7 +210,7 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     
     listOfTasks = doc.getListOfTasks()
     task=listOfTasks[0]
-    fit_res_json=working_dir+'/'+ task.getId()+'.json'
+    fit_res_json=os.path.join(working_dir, task.getId()+'.json')
     fit_results={}
     fit_results['best']={}
     global best_residuals_sum, best_fitParameters
@@ -220,7 +221,7 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
             print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
             print(best_fitParameters[i])
             fit_results['best'][parameter['name']]={}
-            fit_results['best'][parameter['name']]={'component':parameter['component'],'name':parameter['name'],'newValue':best_fitParameters[i]}
+            fit_results['best'][parameter['name']]={'component':parameter['component'],'name':parameter['name'],'newValue':str(best_fitParameters[i])}
             i+=1
     
     print('Values of objective function at the solution: {}'.format(res.fun))
@@ -230,7 +231,7 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
         print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
         print(res.x[i])
         fit_results['solution'][parameter['name']]={}
-        fit_results['solution'][parameter['name']]={'component':parameter['component'],'name':parameter['name'],'newValue':res.x[i]}
+        fit_results['solution'][parameter['name']]={'component':parameter['component'],'name':parameter['name'],'newValue':str(res.x[i])}
         i+=1
     print('The full optimization result is:')
     print(res)
