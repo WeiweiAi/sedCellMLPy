@@ -35,11 +35,11 @@ KISAO_ALGORITHMS = {'KISAO:0000030': 'Euler forward method',
 # https://docs.scipy.org/doc/scipy/reference/optimize.html
 SCIPY_OPTIMIZE_LOCAL = ['Nelder-Mead','Powell','CG','BFGS','Newton-CG','L-BFGS-B','TNC','COBYLA','SLSQP','trust-constr','dogleg','trust-ncg','trust-exact','trust-krylov']
 KISAO_ALGORITHMS_OPT = {'KISAO:0000514': 'Nelder-Mead',
-                    'KISAO:0000472': 'global optimization algorithm',
-                    'KISAO:0000471': 'local optimization algorithm',
-                    'KISAO:0000503': 'simulated annealing',	
-                    'KISAO:0000520': 'evolutionary algorithm',
-                    'KISAO:0000504': 'random search',
+                    'KISAO:0000472': 'global optimization algorithm', # shgo
+                    'KISAO:0000471': 'local optimization algorithm', # least_squares
+                    'KISAO:0000503': 'simulated annealing',	 # dual_annealing
+                    'KISAO:0000520': 'evolutionary algorithm', # differential_evolution
+                    'KISAO:0000504': 'random search', # basinhopping
                     }
 
 def read_sedml(file_name):
@@ -123,6 +123,26 @@ def get_KISAO_parameters_opt(algorithm):
                 opt_parameters['tol'] = float(p['value'])
 
         return method, opt_parameters
+    if algorithm['kisaoID'] == 'KISAO:0000520':
+        for p in algorithm['listOfAlgorithmParameters']:
+            if p['kisaoID'] == 'KISAO:0000486':
+                opt_parameters['maxiter'] = float(p['value'])
+            elif p['kisaoID'] == 'KISAO:0000597':
+                opt_parameters['tol'] = float(p['value'])
+            elif p['kisaoID'] == 'KISAO:0000529':
+                opt_parameters['workers'] = int(p['value'])
+        return None, opt_parameters
+
+    if algorithm['kisaoID'] == 'KISAO:0000472':
+        for p in algorithm['listOfAlgorithmParameters']:
+            if p['kisaoID'] == 'KISAO:0000486':
+                opt_parameters['maxiter'] = float(p['value'])
+            elif p['kisaoID'] == 'KISAO:0000597':
+                opt_parameters['tol'] = float(p['value'])
+            elif p['kisaoID'] == 'KISAO:0000529':
+                opt_parameters['workers'] = int(p['value'])
+        return None, opt_parameters
+    
     elif algorithm['kisaoID'] in KISAO_ALGORITHMS_OPT.keys():
         method = KISAO_ALGORITHMS_OPT[algorithm['kisaoID']]
         for p in algorithm['listOfAlgorithmParameters']:
