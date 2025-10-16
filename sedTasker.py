@@ -9,6 +9,7 @@ import numpy
 import copy
 import math
 import os
+from multiprocessing import Pool
 
 N_iter=0
 best_residuals_sum=1e12
@@ -204,7 +205,17 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     elif method=='simulated annealing':
         res=dual_annealing(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter, x0=initial_value)
     elif method=='evolutionary algorithm':
-        res=differential_evolution(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter, tol=tol,x0=initial_value,workers=workers)
+        with Pool(processes=workers) as pool:
+            res = differential_evolution(
+                objective_function,
+                bounds,
+                args=(external_variables_values, fitExperiments, doc, ss_time, cost_type),
+                maxiter=maxiter,
+                tol=tol,
+                x0=initial_value,
+                workers=pool.map   # <-- note the .map here!
+            )
+        #res=differential_evolution(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter, tol=tol,x0=initial_value,workers=workers)
     elif method=='random search':
         res=basinhopping(objective_function, initial_value,minimizer_kwargs={'args':(external_variables_values, fitExperiments, doc, ss_time,cost_type)}) # cannot use bounds
     elif method=='local optimization algorithm':
