@@ -118,7 +118,7 @@ def get_KISAO_parameters_opt(algorithm):
             if p['kisaoID'] == 'KISAO:0000211':
                 opt_parameters['xatol'] = float(p['value'])
             elif p['kisaoID'] == 'KISAO:0000486':
-                opt_parameters['maxiter'] = float(p['value'])
+                opt_parameters['maxiter'] = int(p['value'])
             elif p['kisaoID'] == 'KISAO:0000597':
                 opt_parameters['tol'] = float(p['value'])
 
@@ -127,11 +127,11 @@ def get_KISAO_parameters_opt(algorithm):
         method = KISAO_ALGORITHMS_OPT[algorithm['kisaoID']]
         for p in algorithm['listOfAlgorithmParameters']:
             if p['kisaoID'] == 'KISAO:0000517':
-                opt_parameters['maxiter'] = float(p['value'])
+                opt_parameters['maxiter'] = int(p['value'])
             elif p['kisaoID'] == 'KISAO:0000597':
                 opt_parameters['tol'] = float(p['value'])
             elif p['kisaoID'] == 'KISAO:0000519':
-                opt_parameters['popsize'] = float(p['value'])
+                opt_parameters['popsize'] = int(p['value'])
             elif p['kisaoID'] == 'KISAO:0000529':
                 opt_parameters['workers'] = int(p['value'])
         return method, opt_parameters
@@ -140,7 +140,7 @@ def get_KISAO_parameters_opt(algorithm):
         method = KISAO_ALGORITHMS_OPT[algorithm['kisaoID']]
         for p in algorithm['listOfAlgorithmParameters']:
             if p['kisaoID'] == 'KISAO:0000486':
-                opt_parameters['maxiter'] = float(p['value'])
+                opt_parameters['maxiter'] = int(p['value'])
             elif p['kisaoID'] == 'KISAO:0000597':
                 opt_parameters['tol'] = float(p['value'])
             elif p['kisaoID'] == 'KISAO:0000529':
