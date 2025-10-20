@@ -199,7 +199,8 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     elif method=='simulated annealing':
         res=dual_annealing(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter, x0=initial_value)
     elif method=='evolutionary algorithm':
-        res=differential_evolution(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter, tol=tol,x0=initial_value)
+        popsize=opt_parameters['popsize'] if 'popsize' in opt_parameters else 15
+        res=differential_evolution(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter,popsize=popsize, tol=tol,x0=initial_value)
     elif method=='random search':
         res=basinhopping(objective_function, initial_value,minimizer_kwargs={'args':(external_variables_values, fitExperiments, doc, ss_time,cost_type)}) # cannot use bounds
     elif method=='local optimization algorithm':

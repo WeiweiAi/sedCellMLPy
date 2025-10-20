@@ -126,10 +126,12 @@ def get_KISAO_parameters_opt(algorithm):
     elif algorithm['kisaoID'] == 'KISAO:0000520':
         method = KISAO_ALGORITHMS_OPT[algorithm['kisaoID']]
         for p in algorithm['listOfAlgorithmParameters']:
-            if p['kisaoID'] == 'KISAO:0000486':
+            if p['kisaoID'] == 'KISAO:0000517':
                 opt_parameters['maxiter'] = float(p['value'])
             elif p['kisaoID'] == 'KISAO:0000597':
                 opt_parameters['tol'] = float(p['value'])
+            elif p['kisaoID'] == 'KISAO:0000519':
+                opt_parameters['popsize'] = float(p['value'])
             elif p['kisaoID'] == 'KISAO:0000529':
                 opt_parameters['workers'] = int(p['value'])
         return method, opt_parameters
