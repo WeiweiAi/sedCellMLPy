@@ -9,6 +9,7 @@ import numpy
 import copy
 import math
 import os
+from multiprocessing.pool import ThreadPool as Pool
 
 N_iter=0
 best_residuals_sum=1e12
@@ -190,22 +191,50 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
         maxiter=int(opt_parameters['maxiter']) 
     else:
         maxiter=1000
+    if 'workers' in opt_parameters:
+        worker_num=int(opt_parameters['workers'])
 
     bounds=Bounds(adjustables[0],adjustables[1])
     initial_value=adjustables[2]
     if method=='global optimization algorithm':
-        res= shgo(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),
-                               options={'ftol': tol, 'maxiter': maxiter})
+        #res= shgo(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),
+                               #options={'ftol': tol, 'maxiter': maxiter})
+        with Pool(processes=worker_num) as pool:
+                res = shgo(
+                    objective_function,
+                    bounds,
+                    args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),            
+                    options={'ftol': tol, 'maxiter': maxiter},
+                    workers=pool.map
+                )
     elif method=='simulated annealing':
         res=dual_annealing(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter, x0=initial_value)
     elif method=='evolutionary algorithm':
         popsize=opt_parameters['popsize'] if 'popsize' in opt_parameters else 15
-        res=differential_evolution(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter,popsize=popsize, tol=tol,x0=initial_value)
+        with Pool(processes=worker_num) as pool:
+                res = differential_evolution(
+                    objective_function,
+                    bounds,
+                    args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),            
+                    maxiter=maxiter,
+                    popsize=popsize,
+                    tol=tol,
+                    x0=initial_value,
+                    workers=pool.map
+                )
+        #res=differential_evolution(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter,popsize=popsize, tol=tol,x0=initial_value)
     elif method=='random search':
         res=basinhopping(objective_function, initial_value,minimizer_kwargs={'args':(external_variables_values, fitExperiments, doc, ss_time,cost_type)}) # cannot use bounds
     elif method=='local optimization algorithm':
-        res=least_squares(objective_function, initial_value, args=(external_variables_values, fitExperiments, doc, ss_time,cost_type), 
-                 bounds=bounds, ftol=tol, gtol=tol, xtol=tol, max_nfev=maxiter)
+        #res=least_squares(objective_function, initial_value, args=(external_variables_values, fitExperiments, doc, ss_time,cost_type), 
+        #         bounds=bounds, ftol=tol, gtol=tol, xtol=tol, max_nfev=maxiter)
+        with Pool(processes=worker_num) as pool:
+                res = least_squares(
+                    objective_function,
+                    initial_value, args=(external_variables_values, fitExperiments, doc, ss_time,cost_type), 
+                    bounds=bounds, ftol=tol, gtol=tol, xtol=tol, max_nfev=maxiter,
+                    workers=pool.map
+                )
     else:
         raise RuntimeError('Optimisation method not supported!')
     
