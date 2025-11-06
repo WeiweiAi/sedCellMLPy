@@ -193,6 +193,8 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
         maxiter=1000
     if 'workers' in opt_parameters:
         worker_num=int(opt_parameters['workers'])
+    else:
+        worker_num=1
 
     bounds=Bounds(adjustables[0],adjustables[1])
     initial_value=adjustables[2]
