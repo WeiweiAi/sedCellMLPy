@@ -129,6 +129,7 @@ def toCellML2(oldPath, newPath, external_variables_info={},strict_mode=True, py_
     The new CellML 2.0 model is written to the specified file.
     If the model is valid, the python code is written to the specified file.
     """
+    issues=''
     try:
         model_parse, issues=parse_model(oldPath, False)
     except Exception as e:

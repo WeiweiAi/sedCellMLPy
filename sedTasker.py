@@ -11,9 +11,6 @@ import math
 import os
 from multiprocessing.pool import ThreadPool as Pool
 
-N_iter=0
-best_residuals_sum=1e12
-best_fitParameters=[]
 
 def exec_task(doc,task,working_dir,external_variables_info={},external_variables_values=[],current_state=None):
     """ Execute a SedTask.
@@ -180,6 +177,15 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     res: scipy.optimize.OptimizeResult
 
     """ 	     
+    
+    def print_intermediate(intermediate_result):
+    # intermediate_result.nit gives the current iteration (generation)
+    # intermediate_result.fun is the best function value found so far
+    # intermediate_result.x is the best solution vector found so far
+        if intermediate_result.nit % 100 == 0:
+            print(f"Iteration {intermediate_result.nit}: Best Fitness = {intermediate_result.fun:.4f}, Best X = {intermediate_result.x}")
+
+    
     # get optimisation settings and fit experiments
     
     fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters, dfDict=get_fit_experiments(doc,task,working_dir,external_variables_info)
@@ -222,6 +228,7 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
                     popsize=popsize,
                     tol=tol,
                     x0=initial_value,
+                    callback=print_intermediate,
                     workers=pool.map
                 )
         #res=differential_evolution(objective_function, bounds,args=(external_variables_values, fitExperiments, doc, ss_time,cost_type),maxiter=maxiter,popsize=popsize, tol=tol,x0=initial_value)
@@ -245,17 +252,7 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     fit_res_json=os.path.join(working_dir, task.getId()+'.json')
     fit_results={}
     fit_results['best']={}
-    global best_residuals_sum, best_fitParameters
-    i=0
-    print('The best residuals sum is:',best_residuals_sum)
-    if len(best_fitParameters)>0:
-        for parameter in adjustableParameters_info.values():
-            print('The estimated value for variable {} in component {} is:'.format(parameter['name'],parameter['component']))
-            print(best_fitParameters[i])
-            fit_results['best'][parameter['name']]={}
-            fit_results['best'][parameter['name']]={'component':parameter['component'],'name':parameter['name'],'newValue':str(best_fitParameters[i])}
-            i+=1
-    
+    i=0    
     print('Values of objective function at the solution: {}'.format(res.fun))
     i=0
     fit_results['solution']={}
@@ -302,8 +299,6 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
     float
         The sum of residuals of all fit experiments.
     """
-    global N_iter, best_residuals_sum, best_fitParameters
-    N_iter+=1
     residuals_sum=0
     sed_results={}
     for fitid,fitExperiment in fitExperiments.items():
@@ -397,10 +392,4 @@ def objective_function(param_vals, external_variables_values, fitExperiments, do
                 
         if math.isnan(residuals_sum):
             return 1e12
-    if residuals_sum<best_residuals_sum:
-        best_residuals_sum=residuals_sum
-        best_fitParameters=param_vals
-    if N_iter%10==0:
-        print('Iteration:', N_iter, ',Parameter values:',param_vals)
-        print('Residuals sum:',residuals_sum)
     return residuals_sum
