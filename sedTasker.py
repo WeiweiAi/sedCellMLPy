@@ -182,8 +182,8 @@ def exec_parameterEstimationTask( doc,task, working_dir,external_variables_info=
     # intermediate_result.nit gives the current iteration (generation)
     # intermediate_result.fun is the best function value found so far
     # intermediate_result.x is the best solution vector found so far
-        if intermediate_result.nit % 100 == 0:
-            print(f"Iteration {intermediate_result.nit}: Best Fitness = {intermediate_result.fun:.4f}, Best X = {intermediate_result.x}")
+        if intermediate_result.nfev % 100 == 0:
+            print(f"Iteration {intermediate_result.nfev}: Best Fitness = {intermediate_result.fun:.4f}, Best X = {intermediate_result.x}")
 
     
     # get optimisation settings and fit experiments
