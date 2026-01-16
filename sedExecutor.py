@@ -283,8 +283,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, ss
         observables=get_observables(analyser,cellml_model,observables_info)
         parameters=get_observables(analyser,cellml_model,parameters_info)
         observables_weight=fitness_info[1]
-        observables_exp=fitness_info[2] 
-        dataGenerators=_worker_dataGenerators[fitid]      
+        observables_exp=fitness_info[2]     
         if simulation_type=='timeCourse':
             external_variables_values_extends=external_variables_values+sub_param_vals+parameters_values    
             try:
