@@ -574,15 +574,15 @@ def calc_data_generator_results_sedVarIds(sedVarIds, mathString, workspace, vari
     if len(var_shapes) > 1:
         print('Variables for data generator do not have consistent shapes')
 
-    compiled_math = compile_math(libsedml.formulaToString(mathString))
+    compiled_math = compile_math(mathString)
 
     if not var_shapes:
-        value = eval_math(libsedml.formulaToString(mathString), compiled_math, workspace)
+        value = eval_math(mathString, compiled_math, workspace)
         result = numpy.array(value)
 
     else:
         for aggregate_func in AGGREGATE_MATH_FUNCTIONS:
-            if re.search(aggregate_func + r' *\(', libsedml.formulaToString(mathString)):
+            if re.search(aggregate_func + r' *\(', mathString):
                 msg = 'Evaluation of aggregate mathematical functions such as `{}` is not supported.'.format(aggregate_func)
                 raise NotImplementedError(msg)
 
@@ -622,7 +622,7 @@ def calc_data_generator_results_sedVarIds(sedVarIds, mathString, workspace, vari
             if not vars_available:
                 continue
 
-            result_el = eval_math(libsedml.formulaToString(mathString), compiled_math, workspace)
+            result_el = eval_math(mathString, compiled_math, workspace)
 
             if n_dims == 0:
                 result = numpy.array(result_el)
