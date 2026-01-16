@@ -1198,13 +1198,18 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
                     raise ValueError('The observable {} is not 1D array!'.format(fitMapping.getDataSource()))             
                 dataGenerator=doc.getDataGenerator(fitMapping.getTarget())
                 sedVars=get_variables_for_data_generator(dataGenerator)
+                sedVarIds=[var.getId() for var in sedVars]
+                mathString=dataGenerator.getMathMLString()
                 try:
                     observable_info = get_variable_info_CellML(sedVars,model_etree)
                 except ValueError as exception:
                     print('Error in get_variable_info_CellML:',exception)
                     raise exception                                   
                 observables_info.update(observable_info)
-                key=dataGenerator.getId()                                                
+                key=dataGenerator.getId() 
+                workspace={}
+                for param in dataGenerator.getListOfParameters():
+                    workspace[param.getId()] = param.getValue()                                               
                 if fitMapping.isSetWeight():
                     weight=fitMapping.getWeight()
                     observables_weight.update({key:weight})
@@ -1225,7 +1230,7 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
                 else:
                     raise ValueError('Fit mapping {} does not have a weight!'.format(fitMapping.getId()))
                       
-                observables_exp.update({key:observable_exp})
+                observables_exp.update({key:(sedVarIds, mathString, workspace,observable_exp)})
 
             else:
                 raise ValueError('Fit mapping type {} is not supported!'.format(fitMapping.getTypeAsString ()))

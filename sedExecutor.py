@@ -9,7 +9,7 @@ import numpy
 import copy
 import math
 import os
-from sedChanger import calc_data_generator_results
+from sedChanger import calc_data_generator_results_sedVarIds
 from simulator import  get_observables, sim_OneStep, sim_TimeCourse,get_externals_varies, load_module
 from multiprocessing import Pool
 import tempfile
@@ -18,21 +18,17 @@ import tempfile
 _worker_modules = {}
 _worker_analysers = {}
 _worker_cellml_models = {}
-dataGenerators={}
-_worker_dataGenerators={}
 def init_worker(fitExperiments):
     """
     Initialize SWIG objects per worker process.
     """
-    global _worker_modules, _worker_analysers, _worker_cellml_models,dataGenerators
+    global _worker_modules, _worker_analysers, _worker_cellml_models
     for fitid, fitExperiment in fitExperiments.items():
         temp_model_source = fitExperiment['temp_model_source']
         model_base_dir = os.path.dirname(temp_model_source)
         external_variables_info = fitExperiment['external_variables_info']
-        temp_model_id = fitExperiment['temp_model_id']
         cellml_model,parse_issues=parse_model(temp_model_source, False)
         _worker_cellml_models[fitid] = cellml_model
-        _worker_dataGenerators[fitid]=dataGenerators
  
         if not cellml_model:
             raise RuntimeError('Model parsing failed!')
@@ -41,10 +37,10 @@ def init_worker(fitExperiments):
             # write Python code to a temporary file
             # make a directory in the model_base_dir for the temporary file if it does not exist
             _worker_analysers[fitid] = analyser
-            temp_folder = model_base_dir+os.sep+ temp_model_id+'_temp'
+            temp_folder = model_base_dir+os.sep+ fitid+'_temp'
             if not os.path.exists(temp_folder):
                 os.makedirs(temp_folder)
-            tempfile_py, full_path = tempfile.mkstemp(suffix='.py', prefix=temp_model_id+"_", text=True,dir=temp_folder)
+            tempfile_py, full_path = tempfile.mkstemp(suffix='.py', prefix=fitid+"_", text=True,dir=temp_folder)
             writePythonCode(analyser, full_path)
             module=load_module(full_path)
             _worker_modules[fitid] = module
@@ -52,8 +48,6 @@ def init_worker(fitExperiments):
             # and delete temporary file
             os.remove(full_path)
             shutil.rmtree(temp_folder)
-    # cleanup modified model sources
-    os.remove(temp_model_source)
     return
 
 
@@ -82,7 +76,6 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
         The time point for steady state simulation, in the format of {fitid:time}
     
     """
-    global dataGenerators
     doc = doc.clone() # clone the document to avoid modifying the original document
     listOfTasks = doc.getListOfTasks()
     listOfOutputs = doc.getListOfOutputs()
@@ -115,11 +108,6 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
         
         elif task.isSedParameterEstimationTask ():
             fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters=get_fit_experiments(doc,task,working_dir,external_variables_info)
-            for fitid,fitExperiment in fitExperiments.items():
-                fitness_info=fitExperiment['fitness_info']
-                observables_exp=fitness_info[2]
-                for key, exp_value in observables_exp.items():
-                    dataGenerators[key]=doc.getDataGenerator(key)
             try:
                 res=exec_parameterEstimationTask(fitExperiments,adjustables,method, opt_parameters,external_variables_values,ss_time,cost_type)
                 fit_res_json=os.path.join(working_dir, task.getId()+'.json')
@@ -348,9 +336,9 @@ def objective_function(param_vals, external_variables_values, fitExperiments, ss
             raise RuntimeError('Simulation type not supported!')
         
         residuals={}
-        for key, exp_value in observables_exp.items():
-            dataGenerator=dataGenerators[key]
-            sim_value=calc_data_generator_results(dataGenerator, sed_results)
+        for key, exp_value_ in observables_exp.items():
+            sedVarIds, mathString, workspace,exp_value=exp_value_
+            sim_value=calc_data_generator_results_sedVarIds(sedVarIds, mathString, workspace,sed_results)
             if cost_type=='AE':
                 residuals[key]=abs(sim_value-exp_value)
                 residuals_sum+=numpy.sum(residuals[key]*observables_weight[key])

@@ -545,6 +545,92 @@ def calc_data_generator_results(data_generator, variable_results):
 
     return result
 
+def calc_data_generator_results_sedVarIds(sedVarIds, mathString, workspace, variable_results):
+    """ Calculate the results of a data generator from the results of its variables
+
+    Args:
+        sedVarIds (:obj:`list`): list of sed variable ids
+        mathString (:obj:`str`): math string
+        workspace (:obj:`dict`): workspace for parameters
+        variable_results (:obj:`VariableResults`): results for the variables of the data generator
+    Raise:
+        NotImplementedError
+    Returns:
+        :obj:`numpy.ndarray`: result of data generator
+    """
+    var_shapes = set()
+    max_shape = []
+    for var_id in sedVarIds:
+        var_res = variable_results[var_id]
+        var_shape = var_res.shape
+        if not var_shape and var_res.size:
+            var_shape = (1,)
+        var_shapes.add(var_shape)
+
+        max_shape = max_shape + [1 if max_shape else 0] * (var_res.ndim - len(max_shape))
+        for i_dim in range(var_res.ndim):
+            max_shape[i_dim] = max(max_shape[i_dim], var_res.shape[i_dim])
+
+    if len(var_shapes) > 1:
+        print('Variables for data generator do not have consistent shapes')
+
+    compiled_math = compile_math(libsedml.formulaToString(mathString))
+
+    if not var_shapes:
+        value = eval_math(libsedml.formulaToString(mathString), compiled_math, workspace)
+        result = numpy.array(value)
+
+    else:
+        for aggregate_func in AGGREGATE_MATH_FUNCTIONS:
+            if re.search(aggregate_func + r' *\(', libsedml.formulaToString(mathString)):
+                msg = 'Evaluation of aggregate mathematical functions such as `{}` is not supported.'.format(aggregate_func)
+                raise NotImplementedError(msg)
+
+        padded_var_shapes = []
+        for var_id in sedVarIds:
+            var_res = variable_results[var_id]
+            padded_var_shapes.append(
+                list(var_res.shape)
+                + [1 if var_res.size else 0] * (len(max_shape) - var_res.ndim)
+            )
+
+        result = numpy.full(max_shape, numpy.nan)
+        n_dims = result.ndim
+        for i_el in range(result.size):
+            el_indices = numpy.unravel_index(i_el, result.shape)
+
+            vars_available = True
+            for var_id, padded_shape in zip(sedVarIds, padded_var_shapes):
+                var_res = variable_results[var_id]
+                if var_res.ndim == 0:
+                    if i_el == 0 and var_res.size:
+                        workspace[var_id] = var_res.tolist()
+                    else:
+                        vars_available = False
+                        break
+
+                else:
+                    for x, y in zip(padded_shape, el_indices):
+                        if (y + 1) > x:
+                            vars_available = False
+                            break
+                    if not vars_available:
+                        break
+
+                    workspace[var_id] = var_res[el_indices[0:var_res.ndim]]
+
+            if not vars_available:
+                continue
+
+            result_el = eval_math(libsedml.formulaToString(mathString), compiled_math, workspace)
+
+            if n_dims == 0:
+                result = numpy.array(result_el)
+            else:
+                result.flat[i_el] = result_el
+
+    return result
+
 def resolve_range(range, model_etrees=None):
     """ Resolve the values of a range
 
