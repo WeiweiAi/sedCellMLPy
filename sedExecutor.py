@@ -300,7 +300,7 @@ def objective_function(param_vals, external_variables_values, fitExperiments, ss
 
         elif simulation_type=='steadyState':
             observable_exp_temp=observables_exp[list(observables_exp.keys())[0]]
-            for i in range(len(observable_exp_temp)): # assume all observables and experimental conditions have the same number of data points
+            for i in range(len(observable_exp_temp[-1])): # assume all observables and experimental conditions have the same number of data points
                 sim_setting.step=ss_time[fitid]
                 sim_setting.output_start_time=sim_setting.step 
                 sim_setting.output_end_time=sim_setting.step
