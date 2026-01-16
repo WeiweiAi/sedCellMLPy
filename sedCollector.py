@@ -1087,15 +1087,16 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
     fitExperiments={}
     original_models = get_models_referenced_by_task(doc,task)
     model=original_models[0] # parameter estimation task should have only one model
-    dict_algorithm=get_dict_algorithm(task.getAlgorithm())
-    method, opt_parameters=get_KISAO_parameters_opt(dict_algorithm)
+    # get the optimization algorithm
+    dict_algorithm_opt=get_dict_algorithm(task.getAlgorithm())
+    method, opt_parameters=get_KISAO_parameters_opt(dict_algorithm_opt)
+    # prepare data frames for data sources
     dfDict={}
     for dataDescription in doc.getListOfDataDescriptions() :
         dfDict.update({dataDescription.getId():get_df_from_dataDescription(dataDescription, working_dir)})
-
+    # resolve the model and apply XML changes
     try:
         temp_model_source=resolve_model(model, doc, working_dir)
-
         if temp_model_source is None:
             temp_model_source =model.getSource()
         cellml_model,parse_issues=parse_model(temp_model_source, False)
@@ -1108,14 +1109,7 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
             full_path = os.path.join(working_dir, model.getId()+'_flat.cellml')
             writeCellML(flatModel, full_path)
             model.setSource(full_path)
-
         temp_model, temp_model_source, model_etree = resolve_model_and_apply_xml_changes(model, doc, working_dir) # must set save_to_file=True
-        cellml_model,parse_issues=parse_model(temp_model_source, False)
-        # os.remove(full_path)
-        # cleanup modified model sources
-        os.remove(temp_model_source)
-        if not cellml_model:
-            raise RuntimeError('Model parsing failed!')
         adjustableParameters_info,experimentReferences,lowerBound,upperBound,initial_value=get_adjustableParameters(model_etree,task)
         adjustables=(lowerBound,upperBound,initial_value)
     except ValueError as exception:
@@ -1138,21 +1132,7 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
             sim_setting.method, sim_setting.integrator_parameters=get_KISAO_parameters(dict_algorithm)
         except ValueError as exception:
             print('Error in get_dict_algorithm or get_KISAO_parameters:',exception)
-            raise exception
-        if fitExperiment.isSetName (): # temporary solution in case that a variant model is used for this fit experiment
-            modelReference=fitExperiment.getName ()
-            model=doc.getModel(modelReference)
-        fitExperiments[fitExperiment.getId()]['model']=model
-        try:
-            temp_model, temp_model_source, model_etree = resolve_model_and_apply_xml_changes(model, doc, working_dir) # must set save_to_file=True
-            cellml_model,parse_issues=parse_model(temp_model_source, False)
-            # cleanup modified model sources
-            os.remove(temp_model_source)
-            if not cellml_model:
-                raise RuntimeError('Model parsing failed!')
-        except ValueError as exception:
-            print('Error in resolve_model_and_apply_xml_changes or parse_model:',exception)
-            raise exception   
+            raise exception 
         sub_adjustableParameters_info={}
         adj_param_indices=[]
         for i in range(len(experimentReferences)):         
@@ -1249,30 +1229,12 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
 
             else:
                 raise ValueError('Fit mapping type {} is not supported!'.format(fitMapping.getTypeAsString ()))
-        
-        model_base_dir=os.path.dirname(temp_model.getSource())
-                         
-        analyser, issues =analyse_model_full(cellml_model,model_base_dir,external_variables_info_new)       
-        if analyser:
-            mtype=get_mtype(analyser)
-            # write Python code to a temporary file
-            # make a directory in the model_base_dir for the temporary file if it does not exist
-            temp_folder = model_base_dir+os.sep+ temp_model.getId()+'_temp'
-            if not os.path.exists(temp_folder):
-                os.makedirs(temp_folder)
-            tempfile_py, full_path = tempfile.mkstemp(suffix='.py', prefix=temp_model.getId()+"_", text=True,dir=temp_folder)
-            writePythonCode(analyser, full_path)
-            module=load_module(full_path)
-            os.close(tempfile_py)
-            # and delete temporary file
-           # os.remove(full_path)
-        shutil.rmtree(temp_folder)
+            
         fitExperiments[fitExperiment.getId()]['fitness_info']=(observables_info,observables_weight,observables_exp)
         fitExperiments[fitExperiment.getId()]['sim_setting']=sim_setting
-        fitExperiments[fitExperiment.getId()].update({'cellml_model':cellml_model,'analyser':analyser, 'module':module, 'mtype':mtype,
-                                                                            'external_variables_info':external_variables_info_new,
-                                                                'adj_param_indices':adj_param_indices,'parameters_values':parameters_values})      
-    return fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters,dfDict 
+        fitExperiments[fitExperiment.getId()].update({'temp_model_source':temp_model_source,'external_variables_info':external_variables_info_new,
+                                                    'adj_param_indices':adj_param_indices,'parameters_values':parameters_values})      
+    return fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters
 
 def get_task_info(doc,task,working_dir,external_variables_info={},external_variables_values=[]):
     """ Collect information for a SedTask.
