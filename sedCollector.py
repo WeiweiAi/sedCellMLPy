@@ -1199,7 +1199,7 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
                 dataGenerator=doc.getDataGenerator(fitMapping.getTarget())
                 sedVars=get_variables_for_data_generator(dataGenerator)
                 sedVarIds=[var.getId() for var in sedVars]
-                mathString=dataGenerator.getMathMLString()
+                mathString=dataGenerator.getMath()
                 try:
                     observable_info = get_variable_info_CellML(sedVars,model_etree)
                 except ValueError as exception:
