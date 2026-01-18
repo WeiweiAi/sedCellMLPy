@@ -18,18 +18,17 @@ import tempfile
 _worker_modules = {}
 _worker_analysers = {}
 _worker_cellml_models = {}
-def init_worker(fitExperiments):
+def init_worker(fitExperiments,temp_model_source):
     """
     Initialize SWIG objects per worker process.
     """
     global _worker_modules, _worker_analysers, _worker_cellml_models
     pid=os.getpid()
+    model_base_dir = os.path.dirname(temp_model_source)
     temp_folder = model_base_dir+os.sep+ str(pid)
     if not os.path.exists(temp_folder):
         os.makedirs(temp_folder)
     for fitid, fitExperiment in fitExperiments.items():
-        temp_model_source = fitExperiment['temp_model_source']
-        model_base_dir = os.path.dirname(temp_model_source)
         external_variables_info = fitExperiment['external_variables_info']
         cellml_model,parse_issues=parse_model(temp_model_source, False)
         _worker_cellml_models[fitid] = cellml_model 
@@ -107,9 +106,9 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
             raise RuntimeError('RepeatedTask not supported yet')
         
         elif task.isSedParameterEstimationTask ():
-            fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters=get_fit_experiments(doc,task,working_dir,external_variables_info)
+            temp_model_source,fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters=get_fit_experiments(doc,task,working_dir,external_variables_info)
             try:
-                res=exec_parameterEstimationTask(fitExperiments,adjustables,method, opt_parameters,external_variables_values,ss_time,cost_type)
+                res=exec_parameterEstimationTask(temp_model_source,fitExperiments,adjustables,method, opt_parameters,external_variables_values,ss_time,cost_type)
                 fit_res_json=os.path.join(working_dir, task.getId()+'.json')
                 fit_results={} 
                 print('Values of objective function at the solution: {}'.format(res.fun))
@@ -132,7 +131,7 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
                 return
     report_result = report_task(doc,task, variable_results, base_out_path, rel_out_path, report_formats =['csv'])
 
-def exec_parameterEstimationTask(fitExperiments,adjustables,method, opt_parameters, external_variables_values,ss_time={},cost_type=None):
+def exec_parameterEstimationTask(temp_model_source,fitExperiments,adjustables,method, opt_parameters, external_variables_values,ss_time={},cost_type=None):
     """
     Execute a SedTask of type ParameterEstimationTask.
     The model is assumed to be in CellML format.
@@ -198,7 +197,7 @@ def exec_parameterEstimationTask(fitExperiments,adjustables,method, opt_paramete
         with Pool(
         processes=worker_num,
         initializer=init_worker,
-        initargs=(fitExperiments,)  # pass original fitExperiments to initializer
+        initargs=(fitExperiments,temp_model_source)  # pass original fitExperiments to initializer
             ) as pool:
             res = differential_evolution(
             objective_function,

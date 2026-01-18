@@ -1237,9 +1237,9 @@ def get_fit_experiments(doc,task,working_dir,external_variables_info={}):
             
         fitExperiments[fitExperiment.getId()]['fitness_info']=(observables_info,observables_weight,observables_exp)
         fitExperiments[fitExperiment.getId()]['sim_setting']=sim_setting
-        fitExperiments[fitExperiment.getId()].update({'temp_model_source':temp_model_source,'external_variables_info':external_variables_info_new,
+        fitExperiments[fitExperiment.getId()].update({'external_variables_info':external_variables_info_new,
                                                     'adj_param_indices':adj_param_indices,'parameters_values':parameters_values})      
-    return fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters
+    return temp_model_source,fitExperiments,adjustables,adjustableParameters_info,method, opt_parameters
 
 def get_task_info(doc,task,working_dir,external_variables_info={},external_variables_values=[]):
     """ Collect information for a SedTask.
