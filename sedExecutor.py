@@ -23,23 +23,23 @@ def init_worker(fitExperiments):
     Initialize SWIG objects per worker process.
     """
     global _worker_modules, _worker_analysers, _worker_cellml_models
+    pid=os.getpid()
+    temp_folder = model_base_dir+os.sep+ str(pid)
+    if not os.path.exists(temp_folder):
+        os.makedirs(temp_folder)
     for fitid, fitExperiment in fitExperiments.items():
         temp_model_source = fitExperiment['temp_model_source']
         model_base_dir = os.path.dirname(temp_model_source)
         external_variables_info = fitExperiment['external_variables_info']
         cellml_model,parse_issues=parse_model(temp_model_source, False)
-        _worker_cellml_models[fitid] = cellml_model
- 
+        _worker_cellml_models[fitid] = cellml_model 
         if not cellml_model:
             raise RuntimeError('Model parsing failed!')
         analyser, issues =analyse_model_full(cellml_model,model_base_dir,external_variables_info)       
         if analyser:
             # write Python code to a temporary file
             # make a directory in the model_base_dir for the temporary file if it does not exist
-            _worker_analysers[fitid] = analyser
-            temp_folder = model_base_dir+os.sep+ fitid+'_temp'
-            if not os.path.exists(temp_folder):
-                os.makedirs(temp_folder)
+            _worker_analysers[fitid] = analyser            
             tempfile_py, full_path = tempfile.mkstemp(suffix='.py', prefix=fitid+"_", text=True,dir=temp_folder)
             writePythonCode(analyser, full_path)
             module=load_module(full_path)
@@ -47,7 +47,7 @@ def init_worker(fitExperiments):
             os.close(tempfile_py)
             # and delete temporary file
             os.remove(full_path)
-            shutil.rmtree(temp_folder)
+    shutil.rmtree(temp_folder)
     return
 
 
