@@ -129,7 +129,7 @@ def exec_sed_doc(doc, working_dir,base_out_path, rel_out_path=None, external_var
             except Exception as exception:
                 print(exception)
                 return
-    report_result = report_task(doc,task, variable_results, base_out_path, rel_out_path, report_formats =['csv'])
+    report_result = report_task(listOfOutputs,task, variable_results, base_out_path, rel_out_path, report_formats =['csv'])
 
 def exec_parameterEstimationTask(temp_model_source,fitExperiments,adjustables,method, opt_parameters, external_variables_values,ss_time={},cost_type=None):
     """
